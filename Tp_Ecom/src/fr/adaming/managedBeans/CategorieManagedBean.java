@@ -1,11 +1,14 @@
 package fr.adaming.managedBeans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
 import fr.adaming.model.Admin;
@@ -30,9 +33,17 @@ public class CategorieManagedBean implements Serializable {
 	
 	// Constructeur par defaut
 	public CategorieManagedBean() {
-		super();
+		this.categorie = new Categorie();
+		this.listeCategorie = new ArrayList<Categorie>();
 	}
 
+	// methode qui s'execute apres l'instanciation du ManagedBean
+		@PostConstruct
+		public void init() {
+			this.maSession = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+			this.admin = (Admin) maSession.getAttribute("agentSession");
+		}
+	
 	// Getters et setters
 	public Categorie getCategorie() {
 		return categorie;

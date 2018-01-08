@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+	<title>Page ajout categorie</title>
+
+</h:head>
+
+<h:body>
+
+<h:form enctype="multipart/form-data">
+
+	<h:panelGrid columns="2">
+		
+		nom de la Categorie : <h:inputText value="#{catMB.categorie.nomCategorie}"/>
+		
+ 		Photo :	<h:inputFile value="#{catMB.categorie.photo}"/> 
+	
+		description : <h:inputText value="#{catMB.categorie.description}"/>
+				
+		<p:commandButton value="ajouter" action="#{catMB.addCategorie}"/>
+	
+	</h:panelGrid>
+
+
+
+</h:form>
+
+
+</h:body>
+
+
+</html>

@@ -4,9 +4,9 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-<head>
+<h:head>
 <title>Bienvenue sur le site de SuperCarnaval !</title>
-</head>
+</h:head>
 <body>
 <h1>C'est la fête ! Vous êtes connecté en tant qu'administrateur ! Que souhaitez vous gérer aujourd'hui ?</h1>
 <h:form>
@@ -16,6 +16,7 @@
 <p:commandButton value="Afficher tous les produits" action="affiche_produits" update="@all"/>
 <p:commandButton value="Rechercher un produit" action="recherche_produit" update="@all"/>
 
+<p:commandButton value="Ajouter Catégorie" action="ajout_categorie" update="@all"/>
 
 </h:form>
 
