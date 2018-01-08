@@ -13,7 +13,7 @@ public class Admin {
 	// Déclarations des attributs
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int idAdmin;
 	private String mail;
 	private String mdp;
 
@@ -30,21 +30,21 @@ public class Admin {
 		this.mdp = mdp;
 	}
 
-	public Admin(int id, String mail, String mdp) {
+	public Admin(int idAdmin, String mail, String mdp) {
 		super();
-		this.id = id;
+		this.idAdmin = idAdmin;
 		this.mail = mail;
 		this.mdp = mdp;
 	}
 
 	// Déclarations des get et set
 
-	public int getId() {
-		return id;
+	public int getIdAdmin() {
+		return idAdmin;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setIdAdmin(int idAdmin) {
+		this.idAdmin = idAdmin;
 	}
 
 	public String getMail() {
@@ -65,7 +65,7 @@ public class Admin {
 
 	@Override
 	public String toString() {
-		return "Admin [id=" + id + ", mail=" + mail + ", mdp=" + mdp + "]";
+		return "Admin [idAdmin=" + idAdmin + ", mail=" + mail + ", mdp=" + mdp + "]";
 	}
 
 }
