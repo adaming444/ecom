@@ -17,6 +17,24 @@ import javax.persistence.Table;
 @Table (name="commandes")
 public class Commande implements Serializable {
 
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Commande other = (Commande) obj;
+		if (idCommande == null) {
+			if (other.idCommande != null)
+				return false;
+		} else if (!idCommande.equals(other.idCommande))
+			return false;
+		return true;
+	}
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idCommande;

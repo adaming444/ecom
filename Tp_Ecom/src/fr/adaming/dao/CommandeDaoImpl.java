@@ -44,7 +44,7 @@ public class CommandeDaoImpl implements ICommandeDao {
 		return c;
 	}
 
-	public int deleteCommande(int id) {
+	public int deleteCommande(Long id) {
 		Commande c = (Commande) em.find(Commande.class, id);
 		if (c != null) {
 			em.remove(c);
@@ -53,13 +53,14 @@ public class CommandeDaoImpl implements ICommandeDao {
 		return 0;
 	}
 
-	public Commande getCommandeById(int id) {
+	public Commande getCommandeById(Long id) {
 		Commande c = (Commande) em.find(Commande.class, id);
 		if (c != null) {
 			return c;
 		}
 		return null;
 	}
+
 	
 
 }

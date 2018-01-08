@@ -24,11 +24,11 @@ public class CommandeServiceImpl implements ICommandeService {
 		return CommandeDao.updateCommande(c);
 	}
 
-	public int deleteCommande(int id) {
+	public int deleteCommande(Long id) {
 		return CommandeDao.deleteCommande(id);
 	}
 
-	public Commande getCommandeById(int id) {
+	public Commande getCommandeById(Long id) {
 		return CommandeDao.getCommandeById(id);
 	}
 }

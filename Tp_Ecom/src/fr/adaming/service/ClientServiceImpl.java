@@ -26,11 +26,11 @@ public class ClientServiceImpl implements IClientService {
 		return clientDao.updateClient(c);
 	}
 
-	public int deleteClient(int id) {
+	public int deleteClient(Long id) {
 		return clientDao.deleteClient(id);
 	}
 
-	public Client getClientById(int id) {
+	public Client getClientById(Long id) {
 		return clientDao.getClientById(id);
 	}
 

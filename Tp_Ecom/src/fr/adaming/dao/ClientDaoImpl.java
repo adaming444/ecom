@@ -44,7 +44,7 @@ public class ClientDaoImpl implements IClientsDao {
 		return c;
 	}
 
-	public int deleteClient(int id) {
+	public int deleteClient(Long id) {
 		Client c = (Client) em.find(Client.class, id);
 		if (c != null) {
 			em.remove(c);
@@ -53,7 +53,7 @@ public class ClientDaoImpl implements IClientsDao {
 		return 0;
 	}
 
-	public Client getClientById(int id) {
+	public Client getClientById(Long id) {
 		Client c = (Client) em.find(Client.class, id);
 		if (c != null) {
 			return c;

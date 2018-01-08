@@ -16,7 +16,7 @@ public interface IClientsDao {
 	
 	public Client updateClient(Client c);
 	
-	public int deleteClient(int id);
+	public int deleteClient(Long id);
 
-	public Client getClientById(int id);
+	public Client getClientById(Long id);
 }

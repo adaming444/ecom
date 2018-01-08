@@ -16,7 +16,7 @@ public interface ICommandeDao {
 	
 	public Commande updateCommande(Commande c);
 	
-	public int deleteCommande(int id);
+	public int deleteCommande(Long id);
 
-	public Commande getCommandeById(int id);
+	public Commande getCommandeById(Long id);
 }
