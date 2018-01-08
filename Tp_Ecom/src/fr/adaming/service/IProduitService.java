@@ -1,14 +1,10 @@
-package fr.adaming.dao;
+package fr.adaming.service;
 
 import java.util.List;
 
-import javax.ejb.Local;
-
-
 import fr.adaming.model.Produit;
 
-@Local
-public interface IProduitDao {
+public interface IProduitService {
 
 	public List<Produit> getAllProduit();
 
