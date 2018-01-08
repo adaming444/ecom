@@ -2,6 +2,7 @@ package fr.adaming.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,7 +23,7 @@ public class Commande implements Serializable {
 	@OneToMany(mappedBy="commande")
 	private List<LigneCommande> listeLigneCommande;
 
-	
+
 	private Date dateCommande;
 
 	public Long getIdCommande() {
@@ -39,6 +40,14 @@ public class Commande implements Serializable {
 
 	public void setDateCommande(Date dateCommande) {
 		this.dateCommande = dateCommande;
+	}
+	
+	public List<LigneCommande> getListeLigneCommande() {
+		return listeLigneCommande;
+	}
+
+	public void setListeLigneCommande(List<LigneCommande> listeLigneCommande) {
+		this.listeLigneCommande = listeLigneCommande;
 	}
 
 	public Commande() {
