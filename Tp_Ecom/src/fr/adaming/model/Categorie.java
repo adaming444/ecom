@@ -2,12 +2,14 @@ package fr.adaming.model;
 
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,6 +27,11 @@ public class Categorie implements Serializable {
 	private byte[] photo;
 	
 	private String description;
+	
+	
+	// Transformation des associations UML en Java
+	@OneToMany(mappedBy="categorie")
+	private List<Produit> produit;
 
 	
 	// Constructeurs
@@ -87,6 +94,16 @@ public class Categorie implements Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+
+	public List<Produit> getProduit() {
+		return produit;
+	}
+
+
+	public void setProduit(List<Produit> produit) {
+		this.produit = produit;
 	}
 
 
