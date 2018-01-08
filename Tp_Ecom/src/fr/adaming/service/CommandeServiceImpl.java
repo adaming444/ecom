@@ -3,10 +3,12 @@ package fr.adaming.service;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.ejb.Stateful;
 
 import fr.adaming.dao.ICommandeDao;
 import fr.adaming.model.Commande;
 
+@Stateful
 public class CommandeServiceImpl implements ICommandeService {
 
 	@EJB
