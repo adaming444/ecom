@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +23,15 @@ public class LigneCommande implements Serializable {
 	
 	private int prix;
 
+	
+	// Transformation de l'association UML en Java
+	@ManyToOne
+	@JoinColumn(referencedColumnName="idProduit")
+	private Produit produit;
+	
+	@ManyToOne
+	@JoinColumn(referencedColumnName="idCommande")
+	private Commande commande;
 	
 	// Constructeurs
 	public LigneCommande() {
@@ -65,8 +76,23 @@ public class LigneCommande implements Serializable {
 	public void setPrix(int prix) {
 		this.prix = prix;
 	}
-
 	
+	public Produit getProduit() {
+		return produit;
+	}
+
+	public void setProduit(Produit produit) {
+		this.produit = produit;
+	}
+
+	public Commande getCommande() {
+		return commande;
+	}
+
+	public void setCommande(Commande commande) {
+		this.commande = commande;
+	}
+
 	// methode tooString
 	@Override
 	public String toString() {
