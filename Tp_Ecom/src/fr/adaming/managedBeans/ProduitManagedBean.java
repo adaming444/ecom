@@ -68,7 +68,7 @@ public class ProduitManagedBean implements Serializable {
 
 	// Les methodes metiers
 
-	public String addVoiture() {
+	public String addProduit() {
 		// //Appel de la methode service
 		this.produit = pService.addProduit(this.produit);
 		if (this.produit.getIdProduit() != 0) {
