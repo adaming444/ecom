@@ -9,5 +9,18 @@
 </head>
 <body>
 <h1>C'est la fête ! Vous êtes connecté en tant qu'administrateur ! Que souhaitez vous gérer aujourd'hui ?</h1>
+<h:form>
+<p:commandButton value="Ajouter Produit" action="ajout_produit" update="@all"/>
+<p:commandButton value="Modifier Produit" action="modif_produit" update="@all"/>
+<p:commandButton value="Supprimer Produit" action="suppr_produit" update="@all"/>
+<p:commandButton value="Afficher tous les produits" action="affiche_produits" update="@all"/>
+<p:commandButton value="Rechercher un produit" action="recherche_produit" update="@all"/>
+
+
+</h:form>
+
+<h:messages style="text-align:center; color:red"/>
+
+
 </body>
 </html>

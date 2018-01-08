@@ -118,4 +118,15 @@ public class ProduitManagedBean implements Serializable {
 		maSession.setAttribute("produitList", this.listeProduits);
 		return "accueilAdmin";
 	}
+	
+	public String getAllProduits() {
+		this.listeProduits = pService.getAllProduit();
+		if (listeProduits.size() > 0) {
+			this.listeProduits = pService.getAllProduit();
+			maSession.setAttribute("produitsList", this.listeProduits);
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Une erreur est survenue du chargement de la liste."));
+		}
+		return "#";
+	}
 }
