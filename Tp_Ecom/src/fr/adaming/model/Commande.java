@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -18,13 +20,15 @@ public class Commande implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idCommande;
+	private Date dateCommande;
 	
 	//transformation uml en java
 	@OneToMany(mappedBy="commande")
 	private List<LigneCommande> listeLigneCommande;
-
-
-	private Date dateCommande;
+	
+	@ManyToOne
+	@JoinColumn(referencedColumnName="idClient")
+	private Client client;
 
 	public Long getIdCommande() {
 		return idCommande;
