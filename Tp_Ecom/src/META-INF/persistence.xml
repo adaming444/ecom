@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-	<persistence-unit name="Tp_Ecom">
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="PU" transaction-type="JTA">
+	
+	<!-- definition de la datasource utilisé -->
+	<jta-data-source>java:/Tp_Ecom</jta-data-source>
+	
+	<!-- enumeration des classes persistentes -->
+	<class>fr.adaming.model.Admin</class>
+	<class>fr.adaming.model.Produit</class>
+	<class>fr.adaming.model.Categorie</class>
+	<class>fr.adaming.model.Commande</class>
+	<class>fr.adaming.model.Client</class>
+	
+	<properties>
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="true" />
+	</properties>
+	
+	
 	</persistence-unit>
 </persistence>
