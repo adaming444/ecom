@@ -65,6 +65,11 @@ public class Commande implements Serializable {
 		this.idCommande = idCommande;
 		this.dateCommande = dateCommande;
 	}
+
+	@Override
+	public String toString() {
+		return "Commande [idCommande=" + idCommande + ", dateCommande=" + dateCommande + "]";
+	}
 	
 	
 	
