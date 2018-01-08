@@ -6,6 +6,8 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
@@ -13,6 +15,8 @@ import fr.adaming.model.Admin;
 import fr.adaming.model.Commande;
 import fr.adaming.service.ICommandeService;
 
+@ManagedBean(name = "comMB")
+@RequestScoped
 public class CommandeManagedBean implements Serializable {
 
 	@EJB
