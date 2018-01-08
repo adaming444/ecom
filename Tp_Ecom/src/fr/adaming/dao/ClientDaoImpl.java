@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import fr.adaming.model.Admin;
 import fr.adaming.model.Client;
 
 @Stateless
@@ -20,7 +19,7 @@ public class ClientDaoImpl implements IClientsDao {
 	public void setEm(EntityManager em) {
 		this.em = em;
 	}
-	
+
 	public List<Client> getAllClients() {
 		// construire la requete JPQL
 		String req = "SELECT c FROM Client c";
@@ -33,18 +32,32 @@ public class ClientDaoImpl implements IClientsDao {
 	}
 
 	public Client addClient(Client c) {
-		return null;
+
+		em.persist(c);
+
+		return c;
 	}
 
 	public Client updateClient(Client c) {
-		return null;
+		em.merge(c);
+
+		return c;
 	}
 
 	public int deleteClient(int id) {
+		Client c = (Client) em.find(Client.class, id);
+		if (c != null) {
+			em.remove(c);
+			return 1;
+		}
 		return 0;
 	}
 
 	public Client getClientById(int id) {
+		Client c = (Client) em.find(Client.class, id);
+		if (c != null) {
+			return c;
+		}
 		return null;
 	}
 

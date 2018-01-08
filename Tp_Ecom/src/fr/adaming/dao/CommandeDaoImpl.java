@@ -5,8 +5,8 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
-import fr.adaming.model.Admin;
 import fr.adaming.model.Commande;
 
 @Stateless
@@ -19,34 +19,45 @@ public class CommandeDaoImpl implements ICommandeDao {
 	public void setEm(EntityManager em) {
 		this.em = em;
 	}
-
-	@Override
+	
 	public List<Commande> getAllCommandes() {
-		// TODO Auto-generated method stub
-		return null;
+		// construire la requete JPQL
+		String req = "SELECT c FROM Commande c";
+
+		// créer le query
+		Query query = em.createQuery(req);
+
+		// envoyer la requete et recup du resultat
+		return query.getResultList();
 	}
 
-	@Override
 	public Commande addCommande(Commande c) {
-		// TODO Auto-generated method stub
-		return null;
+
+		em.persist(c);
+
+		return c;
 	}
 
-	@Override
 	public Commande updateCommande(Commande c) {
-		// TODO Auto-generated method stub
-		return null;
+		em.merge(c);
+
+		return c;
 	}
 
-	@Override
 	public int deleteCommande(int id) {
-		// TODO Auto-generated method stub
+		Commande c = (Commande) em.find(Commande.class, id);
+		if (c != null) {
+			em.remove(c);
+			return 1;
+		}
 		return 0;
 	}
 
-	@Override
 	public Commande getCommandeById(int id) {
-		// TODO Auto-generated method stub
+		Commande c = (Commande) em.find(Commande.class, id);
+		if (c != null) {
+			return c;
+		}
 		return null;
 	}
 	
