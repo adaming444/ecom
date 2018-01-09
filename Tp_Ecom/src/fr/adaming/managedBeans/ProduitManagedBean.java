@@ -4,10 +4,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
@@ -23,7 +25,7 @@ import fr.adaming.service.IProduitService;
 import fr.adaming.service.ProduitServiceImpl;
 
 @ManagedBean(name = "pMb")
-@RequestScoped
+@ViewScoped
 public class ProduitManagedBean implements Serializable {
 
 	@EJB
@@ -46,6 +48,7 @@ public class ProduitManagedBean implements Serializable {
 	}
 
 	// Methode qui s'exectute apres l'instanciation du ManagedBean
+	@PostConstruct
 	public void init() {
 		this.maSession = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		this.admin = (Admin) maSession.getAttribute("adminSession");
@@ -101,11 +104,13 @@ public class ProduitManagedBean implements Serializable {
 		// //Appel de la methode service
 
 		this.produit = pService.addProduit(this.produit);
+		
+		System.out.println("------------------- "+this.produit.getIdProduit() );
 		if (this.produit.getIdProduit() != 0) {
 			// Recuperer la nouvelle liste de la bd
-			List<Produit> listeP = pService.getAllProduit();
+			this.listeProduits = pService.getAllProduit();
 			// Mettre a jour la liste des produits dans la session
-			maSession.setAttribute("produitList", listeP);
+			maSession.setAttribute("produitList", this.listeProduits);
 			return "accueilAdmin";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null,

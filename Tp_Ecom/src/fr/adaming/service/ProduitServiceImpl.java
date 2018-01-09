@@ -3,13 +3,14 @@ package fr.adaming.service;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 
 import fr.adaming.dao.IProduitDao;
 import fr.adaming.dao.ProduitDaoImpl;
 import fr.adaming.model.Produit;
 
-@Stateless
+@Stateful
 public class ProduitServiceImpl implements IProduitService {
 	
 	//Transformation de l'association UML en java
