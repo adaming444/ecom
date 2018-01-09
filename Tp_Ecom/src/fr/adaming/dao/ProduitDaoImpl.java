@@ -37,8 +37,16 @@ public class ProduitDaoImpl implements IProduitDao {
 
 	@Override
 	public Produit updateProduit(Produit p) {
-		Produit pOut = em.merge(p);
-		return pOut;
+		// Recuperation du produit dans la bdd
+		Produit prodOut = this.getProduitbyId(p.getIdProduit());
+		// on set les nouvelles valeurs
+		prodOut.setDesignation(p.getDesignation());
+		prodOut.setDescription(p.getDescription());
+		prodOut.setPrix(p.getPrix());
+		prodOut.setQuantite(p.getQuantite());
+		prodOut.setPhoto(p.getPhoto());
+		em.merge(prodOut);
+		return prodOut;
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package fr.adaming.managedBeans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -9,6 +10,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
+
+import org.apache.commons.codec.binary.Base64;
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.UploadedFile;
 
 import fr.adaming.model.Admin;
 import fr.adaming.model.Produit;
@@ -29,11 +34,15 @@ public class ProduitManagedBean implements Serializable {
 	private Admin admin;
 	private List<Produit> listeProduits;
 	private HttpSession maSession;
+	private UploadedFile file;
+
+	private String image;
 
 	public ProduitManagedBean() {
 
 		// Instancier un produit
 		this.produit = new Produit();
+		this.listeProduits = new ArrayList<Produit>();
 	}
 
 	// Methode qui s'exectute apres l'instanciation du ManagedBean
@@ -69,6 +78,22 @@ public class ProduitManagedBean implements Serializable {
 	public void setpService(IProduitService pService) {
 		this.pService = pService;
 	}
+	
+	public UploadedFile getFile() {
+		return file;
+	}
+
+	public void setFile(UploadedFile file) {
+		this.file = file;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
 
 	// Les methodes metiers
 
@@ -87,6 +112,13 @@ public class ProduitManagedBean implements Serializable {
 					new FacesMessage("Une erreur est survenue lors de l'ajout."));
 			return "ajout_produit";
 		}
+	}
+	
+	public void upload(FileUploadEvent event){
+		UploadedFile ufile = event.getFile();
+		byte[] contents = ufile.getContents();
+		this.produit.setPhoto(contents);
+		this.image = "data:image/png;base64,"+Base64.encodeBase64String(contents);
 	}
 	
 	public String updateProduit() {

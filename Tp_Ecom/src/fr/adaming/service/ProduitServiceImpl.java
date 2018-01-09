@@ -2,6 +2,7 @@ package fr.adaming.service;
 
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 import fr.adaming.dao.IProduitDao;
@@ -12,7 +13,8 @@ import fr.adaming.model.Produit;
 public class ProduitServiceImpl implements IProduitService {
 	
 	//Transformation de l'association UML en java
-	private IProduitDao produitDao = new ProduitDaoImpl();
+	@EJB
+	private IProduitDao produitDao;
 
 	@Override
 	public List<Produit> getAllProduit() {
