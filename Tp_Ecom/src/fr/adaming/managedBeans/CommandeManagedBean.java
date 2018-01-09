@@ -1,6 +1,7 @@
 package fr.adaming.managedBeans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -31,6 +32,7 @@ public class CommandeManagedBean implements Serializable {
 
 	public CommandeManagedBean() {
 		this.commande = new Commande();
+		this.listeCommandes = new ArrayList<Commande>();
 	}
 
 	// methode qui s'execute après l'instanciation du managed bean

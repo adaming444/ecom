@@ -1,5 +1,6 @@
 package fr.adaming.managedBeans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import fr.adaming.model.Admin;
 import fr.adaming.model.Client;
+import fr.adaming.model.Commande;
 import fr.adaming.service.IClientService;
 
 @ManagedBean(name = "clMB")
@@ -30,6 +32,8 @@ public class ClientManagedBean {
 
 	public ClientManagedBean() {
 		this.client = new Client();
+		this.listeClients = new ArrayList<Client>();
+
 	}
 
 	// methode qui s'execute après l'instanciation du managed bean
