@@ -23,7 +23,7 @@ public class Produit implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idProduit;
 	private String designation;
-	private String description;
+	private String description; 
 	private double prix;
 	private int quantite;
 	private boolean selectionne;
