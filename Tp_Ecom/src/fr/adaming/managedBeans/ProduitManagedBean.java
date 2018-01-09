@@ -18,6 +18,7 @@ import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 
 import fr.adaming.model.Admin;
+import fr.adaming.model.Categorie;
 import fr.adaming.model.Produit;
 import fr.adaming.service.CategorieServiceImpl;
 import fr.adaming.service.ICategorieService;
@@ -143,6 +144,7 @@ public class ProduitManagedBean implements Serializable {
 
 	public String getProduitbyId() {
 		Produit pFind = pService.getProduitbyId(this.produit.getIdProduit());
+		pFind.setImage("data:image/png;base64," + Base64.encodeBase64String(pFind.getPhoto()));
 		if (pFind != null) {
 			this.produit = pFind;
 		} else {
@@ -154,6 +156,7 @@ public class ProduitManagedBean implements Serializable {
 	
 	public String getProduitbyName(){
 		Produit pFind = pService.getProduitbyName(this.produit.getDesignation());
+		pFind.setImage("data:image/png;base64," + Base64.encodeBase64String(pFind.getPhoto()));
 		if (pFind != null) {
 			this.produit = pFind;
 		} else {
@@ -183,6 +186,14 @@ public class ProduitManagedBean implements Serializable {
 	public String getAllProduits() {
 		this.listeProduits = pService.getAllProduit();
 		if (listeProduits.size() > 0) {
+			
+			List<Produit> listeTemp = new ArrayList<Produit>();
+			for (Produit prod : listeProduits) {
+				prod.setImage("data:image/png;base64," + Base64.encodeBase64String(prod.getPhoto()));
+				listeTemp.add(prod);
+			}
+			this.setListeProduits(listeTemp);
+			
 			maSession.setAttribute("produitList", this.listeProduits);
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null,
