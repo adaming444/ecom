@@ -88,7 +88,7 @@ public class ProduitManagedBean implements Serializable {
 			return "ajout_produit";
 		}
 	}
-
+	
 	public String updateProduit() {
 		Produit pModif = pService.updateProduit(this.produit);
 		if (pModif != null) {
