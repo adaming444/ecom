@@ -17,8 +17,16 @@
 		
 		Id:<p:inputText value="#{pMb.produit.idProduit}" />
 
-			<p:commandButton value="Rechercher" action="#{pMb.getProduitbyId}"
-				icon="ui-icon-disk" update="messages idt " />
+			<p:commandButton value="Rechercher via Id"
+				action="#{pMb.getProduitbyId}" icon="ui-icon-disk"
+				update="@all " />
+				
+		Designation du produit :<p:inputText
+				value="#{pMb.produit.designation}" />
+
+			<p:commandButton value="Rechercher via le Nom"
+				action="#{pMb.getProduitbyName}" icon="ui-icon-disk"
+				update="@all" />
 
 		</h:panelGrid>
 	</h:form>
