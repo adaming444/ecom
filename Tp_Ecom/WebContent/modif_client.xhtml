@@ -5,9 +5,10 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
+
 <h:head>
 
-	<title>Page ajout client</title>
+	<title>Page modification client</title>
 
 </h:head>
 
@@ -17,6 +18,8 @@
 
 		<h:panelGrid columns="2">
 		
+		Id : <h:inputText value="#{clMB.client.idClient}" onchange="#{clMB.getClientById}" />
+		
 		Nom  : <h:inputText value="#{clMB.client.nomClient}" />
 			
 		Email : <h:inputText value="#{clMB.client.email}" />
@@ -25,13 +28,13 @@
 		
 		Adresse : <h:inputText value="#{clMB.client.adresse}" />
 
-		<p:commandButton value="ajouter" action="#{clMB.client.addClient}" />
+		<p:commandButton value="Modifier" action="#{clMB.updateClient}" />
 
 		</h:panelGrid>
 
 	</h:form>
 
-<h:messages style="text-align:center; color:red"/>
+	<h:messages style="text-align:center; color:red" />
 
 </h:body>
 

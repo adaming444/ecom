@@ -106,10 +106,10 @@ public class ClientManagedBean {
 		if (clientService.deleteClient(this.client.getIdClient()) == 1) {
 			this.listeClients = clientService.getAllClients();
 			maSession.setAttribute("clientsList", this.listeClients);
-			return "success";
+			return "accueilAdmin";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Une erreur est survenue lors de la suppression."));
-			return "#";
+			return "suppr.client";
 		}
 	}
 
