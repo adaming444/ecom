@@ -104,7 +104,7 @@ public class ProduitManagedBean implements Serializable {
 		if (this.produit.getIdProduit() != 0) {
 			// Recuperer la nouvelle liste de la bd
 			List<Produit> listeP = pService.getAllProduit();
-			// Mettre a jour la liste des voitures dans la session
+			// Mettre a jour la liste des produits dans la session
 			maSession.setAttribute("produitList", listeP);
 			return "accueilAdmin";
 		} else {
@@ -170,8 +170,7 @@ public class ProduitManagedBean implements Serializable {
 	public String getAllProduits() {
 		this.listeProduits = pService.getAllProduit();
 		if (listeProduits.size() > 0) {
-			this.listeProduits = pService.getAllProduit();
-			maSession.setAttribute("produitsList", this.listeProduits);
+			maSession.setAttribute("produitList", this.listeProduits);
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Une erreur est survenue du chargement de la liste."));
