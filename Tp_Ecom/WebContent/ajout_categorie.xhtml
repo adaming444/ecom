@@ -21,9 +21,9 @@
 			
 		description : <h:inputText value="#{catMB.categorie.description}"/>
 		
- 		Photo :	<p:fileUpload mode="advanced" fileUploadListener="catMB.upload" auto="true" update="idImage" />
+ 		Photo :	<p:fileUpload mode="advanced"  auto="true" fileUploadListener="#{catMB.upload}" update="idImage" />
 
-		<p:graphicImage id="idImage" value="catMB.image"/>
+		<h:graphicImage id="idImage" value="#{catMB.image}"/>
 				
 		<p:commandButton value="ajouter" action="#{catMB.addCategorie}"/>
 	

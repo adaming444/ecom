@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="categories")
@@ -27,6 +28,9 @@ public class Categorie implements Serializable {
 	private byte[] photo;
 	
 	private String description;
+	
+	@Transient
+	private String image;
 	
 	
 	// Transformation des associations UML en Java
