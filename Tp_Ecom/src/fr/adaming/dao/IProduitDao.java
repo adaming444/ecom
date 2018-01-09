@@ -19,5 +19,7 @@ public interface IProduitDao {
 	public int deleteProduit(int id);
 
 	public Produit getProduitbyId(int id);
+	
+	public Produit getProduitbyName(String designation);
 
 }

@@ -71,4 +71,22 @@ public class ProduitDaoImpl implements IProduitDao {
 		}
 		return null;
 	}
+
+	@Override
+	public Produit getProduitbyName(String designation) {
+		// creation d'une requete jpql
+				String req = "SELECT p FROM Produit as p where p.designation=:pdesignation";
+				// Creer un query
+				Query query = em.createQuery(req);
+				// Assigner les paramètres
+				query.setParameter("pdesignation", designation);
+				try {
+					// envoyer et recuperer la req
+					Produit pFind = (Produit) query.getSingleResult();
+					return pFind;
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				return null;
+	}
 }

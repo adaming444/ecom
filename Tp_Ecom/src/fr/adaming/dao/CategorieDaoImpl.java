@@ -31,12 +31,12 @@ public class CategorieDaoImpl implements ICategorieDao {
 	public Categorie updateCategorie(Categorie c) {
 		// Recuperation de la categorie dans la bdd
 		Categorie catOut = this.getCategorieById(c.getIdCategorie());
-		
+
 		// on sette les nouvelles valeurs
 		catOut.setNomCategorie(c.getNomCategorie());
 		catOut.setDescription(c.getDescription());
 		catOut.setPhoto(c.getPhoto());
-		
+
 		// actualisation de la bdd
 		em.merge(catOut);
 		return catOut;
@@ -82,6 +82,22 @@ public class CategorieDaoImpl implements ICategorieDao {
 
 		// envoie et recuperation du resultat et retour
 		return query.getResultList();
+	}
+
+	@Override
+	public Categorie getCategorieByName(String Name) {
+		// ecriture de la requete
+		String req = "SELECT c FROM Categorie c WHERE c.nomCategorie=: pNomC";
+
+		// creation de la query
+		Query query = em.createQuery(req);
+
+		// Assignation des parametres
+		query.setParameter("pNomC", Name );
+
+		// envoie et recuperation du resultat et retour
+		return (Categorie) query.getSingleResult();
+		
 	}
 
 }

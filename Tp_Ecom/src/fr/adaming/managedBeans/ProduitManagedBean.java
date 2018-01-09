@@ -23,7 +23,7 @@ public class ProduitManagedBean implements Serializable {
 
 	@EJB
 	private IProduitService pService;
-	
+
 	private ICategorieService cService = new CategorieServiceImpl();
 	private Produit produit;
 	private Admin admin;
@@ -74,7 +74,7 @@ public class ProduitManagedBean implements Serializable {
 
 	public String addProduit() {
 		// //Appel de la methode service
-		
+
 		this.produit = pService.addProduit(this.produit);
 		if (this.produit.getIdProduit() != 0) {
 			// Recuperer la nouvelle liste de la bd
@@ -114,6 +114,17 @@ public class ProduitManagedBean implements Serializable {
 		}
 		return "rechercherP";
 	}
+	
+	public String getProduitbyName(){
+		Produit pFind = pService.getProduitbyName(this.produit.getDesignation());
+		if (pFind != null) {
+			this.produit = pFind;
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("Une erreur est survenue lors de la recherche."));
+		}
+		return "rechercherP";
+	}
 
 	public String deleteProduit() {
 		pService.deleteProduit(this.produit.getIdProduit());
@@ -123,14 +134,15 @@ public class ProduitManagedBean implements Serializable {
 		maSession.setAttribute("produitList", this.listeProduits);
 		return "accueilAdmin";
 	}
-	
+
 	public String getAllProduits() {
 		this.listeProduits = pService.getAllProduit();
 		if (listeProduits.size() > 0) {
 			this.listeProduits = pService.getAllProduit();
 			maSession.setAttribute("produitsList", this.listeProduits);
 		} else {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Une erreur est survenue du chargement de la liste."));
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("Une erreur est survenue du chargement de la liste."));
 		}
 		return "#";
 	}

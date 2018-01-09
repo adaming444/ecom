@@ -15,5 +15,7 @@ public interface IProduitService {
 	public int deleteProduit(int id);
 
 	public Produit getProduitbyId(int id);
+	
+	public Produit getProduitbyName(String designation);
 
 }
