@@ -19,7 +19,7 @@
 		Id Catégorie : <h:inputText value="#{catMB.categorie.idCategorie}" />
 
 			<p:commandButton value="chercher" action="#{catMB.recupCategorieById}"
-				update="idTable idMsg" />
+				update="@all" />
 
 		</h:panelGrid>
 

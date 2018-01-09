@@ -157,7 +157,8 @@ public class CategorieManagedBean implements Serializable {
 		}
 	}
 
-	public String recupCategorieById() {
+	@SuppressWarnings("unused")
+	public void recupCategorieById() {
 		Categorie cOut = categorieService.getCategorieById(this.categorie.getIdCategorie());
 		cOut.setImage("data:image/png;base64," + Base64.encodeBase64String(cOut.getPhoto()));
 		if (cOut != null) {
@@ -167,7 +168,6 @@ public class CategorieManagedBean implements Serializable {
 					new FacesMessage("Une erreur est survenue lors de la recherche."));
 		}
 
-		return "affiche_categorie";
 	}
 
 	public String recupAllCategorie() {
