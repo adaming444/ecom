@@ -80,10 +80,10 @@ public class ClientManagedBean {
 			this.listeClients = clientService.getAllClients();
 			// mettre ajour la liste dans la session
 			maSession.setAttribute("clientsList", this.listeClients);
-			return "success";
+			return "accueilAdmin";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Une erreur est survenue lors de l'ajout."));
-			return "#";
+			return "ajout_client";
 		}
 	}
 
@@ -106,10 +106,10 @@ public class ClientManagedBean {
 		if (clientService.deleteClient(this.client.getIdClient()) == 1) {
 			this.listeClients = clientService.getAllClients();
 			maSession.setAttribute("clientsList", this.listeClients);
-			return "success";
+			return "accueilAdmin";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Une erreur est survenue lors de la suppression."));
-			return "#";
+			return "suppr.client";
 		}
 	}
 
@@ -131,6 +131,6 @@ public class ClientManagedBean {
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Une erreur est survenue du chargement de la liste."));
 		}
-		return "#";
+		return "affiche_clients";
 	}
 }

@@ -7,12 +7,32 @@
 		xmlns:p="http://primefaces.org/ui">
 <h:head>
 
-	<title>Page</title>
+	<title>Page affichage liste catégorie</title>
 
 </h:head>
 
 <h:body>
 
+	<p:dataTable id="idTable" var="cat" value="#{sessionScope.categorieListe}">
+		<p:column headerText="Id">
+			<h:outputText value="#{cat.idCategorie}" />
+		</p:column>
+
+		<p:column headerText="Nom de la catégorie">
+			<h:outputText value="#{cat.nomCategorie}" />
+		</p:column>
+
+		<p:column headerText="Photo">
+			<h:graphicImage value="#{cat.image}"  width="100 px" height="100 px"/>
+		</p:column>
+
+		<p:column headerText="description">
+			<h:outputText value="#{cat.description}" />
+		</p:column>
+
+	</p:dataTable>
+
+<p:messages id="idMsg" style="color : darkred"/>
 
 
 </h:body>

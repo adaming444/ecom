@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+	<title>Page recherche produit</title>
+
+</h:head>
+
+<h:body>
+
+<h:form>
+		<h:panelGrid columns="2">
+	
+		Id Produit : <h:inputText value="#{pMb.produit.idProduit}" />
+
+			<p:commandButton value="Rechercher" action="#{pMb.getProduitbyName}"
+				update="idTable idMsg" />
+
+		</h:panelGrid>
+
+
+	</h:form>
+	<p:dataTable id="idTable" var="pdt" value="#{pMb.produit}">
+		<p:column headerText="Id Produit">
+			<h:outputText value="#{pdt.idProduit}" />
+		</p:column>
+
+		<p:column headerText="Désignation du produit">
+			<h:outputText value="#{pdt.designation}" />
+		</p:column>
+
+		<p:column headerText="Description">
+			<h:outputText value="#{pdt.description}"/>
+		</p:column>
+
+		<p:column headerText="Prix">
+			<h:outputText value="#{pdt.prix}" />
+		</p:column>
+		
+		<p:column headerText="Quantité">
+			<h:outputText value="#{pdt.quantite}" />
+		</p:column>
+		
+		<p:column headerText="Photo">
+			<h:graphicImage value="#{pdt.image}"/>
+		</p:column>
+		
+
+	</p:dataTable>
+
+<p:messages id="idMsg" style="color : darkred"/>
+
+
+</h:body>
+
+
+</html>
