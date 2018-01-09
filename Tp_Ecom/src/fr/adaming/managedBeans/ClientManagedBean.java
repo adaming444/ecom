@@ -131,6 +131,6 @@ public class ClientManagedBean {
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Une erreur est survenue du chargement de la liste."));
 		}
-		return "#";
+		return "affiche_clients";
 	}
 }

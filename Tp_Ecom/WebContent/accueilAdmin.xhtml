@@ -17,21 +17,21 @@
 <p:commandButton value="Ajouter Produit" action="ajout_produit" update="@all"/>
 <p:commandButton value="Modifier Produit" action="modif_produit" update="@all"/>
 <p:commandButton value="Supprimer Produit" action="suppr_produit" update="@all"/>
-<p:commandButton value="Afficher tous les produits" action="affiche_produits" update="@all"/>
+<p:commandButton value="Afficher tous les produits" action="#{pMb.getAllProduits}" update="@all"/>
 <p:commandButton value="Rechercher un produit" action="recherche_produit" update="@all"/>
 <br/>
 <hr/>
 <p:commandButton value="Ajouter Catégorie" action="ajout_categorie" update="@all"/>
 <p:commandButton value="Supprimer Catégorie" action="suppr_categorie" update="@all"/>
 <p:commandButton value="Modifier Catégorie" action="modif_categorie" update="@all"/>
-<p:commandButton value="Afficher toutes les catégories" action="affiche_categories" update="@all"/>
+<p:commandButton value="Afficher toutes les catégories" action="#{catMB.recupAllCategorie}" update="@all"/>
 <p:commandButton value="Rechercher Catégorie" action="affiche_categorie" update="@all"/>
 <br/>
 <hr/>
 <p:commandButton value="Ajouter Client" action="ajout_client" update="@all"/>
 <p:commandButton value="Supprimer Client" action="suppr_client" update="@all"/>
 <p:commandButton value="Modifier Client" action="modif_client" update="@all"/>
-<p:commandButton value="Afficher tous les Clients" action="affiche_clients" update="@all"/>
+<p:commandButton value="Afficher tous les Clients" action="#{clMB.getAllClients}" update="@all"/>
 <p:commandButton value="Rechercher Client" action="recherche_client" update="@all"/>
 </h:form>
 
