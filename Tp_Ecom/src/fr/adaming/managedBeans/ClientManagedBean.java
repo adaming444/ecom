@@ -80,10 +80,10 @@ public class ClientManagedBean {
 			this.listeClients = clientService.getAllClients();
 			// mettre ajour la liste dans la session
 			maSession.setAttribute("clientsList", this.listeClients);
-			return "success";
+			return "accueilAdmin";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Une erreur est survenue lors de l'ajout."));
-			return "#";
+			return "ajout_client";
 		}
 	}
 
