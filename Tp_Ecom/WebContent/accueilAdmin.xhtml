@@ -6,8 +6,12 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 <title>Bienvenue sur le site de SuperCarnaval !</title>
+<h:outputStylesheet library="css" name="csstest.css"/>
+
 </h:head>
 <body>
+<ui:composition template="/template/templateAdmin.xhtml">
+<ui:define name="corps">
 <h1>C'est la fête ! Vous êtes connecté en tant qu'administrateur ! Que souhaitez vous gérer aujourd'hui ?</h1>
 <h:form>
 <p:commandButton value="Ajouter Produit" action="ajout_produit" update="@all"/>
@@ -15,14 +19,18 @@
 <p:commandButton value="Supprimer Produit" action="suppr_produit" update="@all"/>
 <p:commandButton value="Afficher tous les produits" action="affiche_produits" update="@all"/>
 <p:commandButton value="Rechercher un produit" action="recherche_produit" update="@all"/>
-
+<br/>
+<hr/>
 <p:commandButton value="Ajouter Catégorie" action="ajout_categorie" update="@all"/>
 <p:commandButton value="Supprimer Catégorie" action="suppr_categorie" update="@all"/>
-
-
+<p:commandButton value="Modifier Catégorie" action="modif_categorie" update="@all"/>
+<p:commandButton value="Afficher toutes les catégories" action="affiche_categories" update="@all"/>
+<p:commandButton value="Rechercher Catégorie" action="recherche_categorie" update="@all"/>
 </h:form>
 
 <h:messages style="text-align:center; color:red"/>
+</ui:define>
+</ui:composition>
 
 
 </body>
