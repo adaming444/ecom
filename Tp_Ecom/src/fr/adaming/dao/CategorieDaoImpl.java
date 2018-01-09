@@ -60,7 +60,7 @@ public class CategorieDaoImpl implements ICategorieDao {
 	@Override
 	public Categorie getCategorieById(Long id) {
 		// ecriture de la requete
-		String req = "SELECT c FROM Categorie c WHERE c.idCategorie=: pId";
+		String req = "SELECT c FROM Categorie c WHERE c.idCategorie=:pId";
 
 		// creation de la query
 		Query query = em.createQuery(req);

@@ -50,7 +50,7 @@ public class CategorieManagedBean implements Serializable {
 	@PostConstruct
 	public void init() {
 		this.maSession = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-		this.admin = (Admin) maSession.getAttribute("agentSession");
+		this.admin = (Admin) maSession.getAttribute("adminSession");
 	}
 
 	// Getters et setters
@@ -171,7 +171,7 @@ public class CategorieManagedBean implements Serializable {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Une erreur est survenue lors de la recherche."));
 		}
 		
-		return "recherche_categorie";
+		return "affiche_categorie";
 	}
 
 	public String recupAllCategorie() {
