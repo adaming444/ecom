@@ -45,7 +45,7 @@ public class CategorieDaoImpl implements ICategorieDao {
 	@Override
 	public int deleteCategorie(Long id) {
 		// ecriture de la requete
-		String req = "DELETE FROM Categorie c WHERE c.idCategorie=: pId";
+		String req = "DELETE FROM Categorie c WHERE c.idCategorie=:pId";
 
 		// creation de la query
 		Query query = em.createQuery(req);

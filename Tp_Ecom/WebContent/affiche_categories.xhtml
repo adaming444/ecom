@@ -13,6 +13,26 @@
 
 <h:body>
 
+	<p:dataTable id="idTable" var="cat" value="#{sessionScope.categorieListe}">
+		<p:column headerText="Id">
+			<h:outputText value="#{cat.idCategorie}" />
+		</p:column>
+
+		<p:column headerText="Nom de la catégorie">
+			<h:outputText value="#{cat.nomCategorie}" />
+		</p:column>
+
+		<p:column headerText="Photo">
+			<h:graphicImage value="#{cat.image}"/>
+		</p:column>
+
+		<p:column headerText="description">
+			<h:outputText value="#{cat.description}" />
+		</p:column>
+
+	</p:dataTable>
+
+<p:messages id="idMsg" style="color : darkred"/>
 
 
 </h:body>

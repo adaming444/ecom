@@ -9,6 +9,7 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
@@ -21,7 +22,7 @@ import fr.adaming.model.Categorie;
 import fr.adaming.service.ICategorieService;
 
 @ManagedBean(name = "catMB")
-@SessionScoped
+@ViewScoped
 public class CategorieManagedBean implements Serializable {
 
 	@EJB
@@ -34,11 +35,10 @@ public class CategorieManagedBean implements Serializable {
 	private Admin admin;
 
 	private HttpSession maSession;
-	
-	private UploadedFile file;
-	
-	private String image;
 
+	private UploadedFile file;
+
+	private String image;
 
 	// Constructeur par defaut
 	public CategorieManagedBean() {
@@ -82,7 +82,6 @@ public class CategorieManagedBean implements Serializable {
 		this.categorieService = categorieService;
 	}
 
-
 	public UploadedFile getFile() {
 		return file;
 	}
@@ -99,13 +98,12 @@ public class CategorieManagedBean implements Serializable {
 		this.image = image;
 	}
 
-	
 	// methodes metier
 	public String addCategorie() {
-		
+
 		this.categorie = categorieService.addCategorie(this.categorie);
-//		this.image=null;
-//		this.file=null;
+		// this.image=null;
+		// this.file=null;
 
 		if (this.categorie.getIdCategorie() != 0) {
 			this.listeCategorie = categorieService.getAllCategorie();
@@ -117,19 +115,18 @@ public class CategorieManagedBean implements Serializable {
 			return "ajout_categorie";
 		}
 	}
-	
-	public void upload(FileUploadEvent event){
+
+	public void upload(FileUploadEvent event) {
 		UploadedFile ufile = event.getFile();
 		byte[] contents = ufile.getContents();
 		this.categorie.setPhoto(contents);
-		this.image = "data:image/png;base64,"+Base64.encodeBase64String(contents);
+		this.image = "data:image/png;base64," + Base64.encodeBase64String(contents);
 	}
-	
-	
-	public String deleteCategorie(){
+
+	public String deleteCategorie() {
 		int verif = categorieService.deleteCategorie(this.categorie.getIdCategorie());
-		
-		if (verif == 1){
+
+		if (verif == 1) {
 			this.listeCategorie = categorieService.getAllCategorie();
 
 			maSession.setAttribute("categorieListe", this.listeCategorie);
@@ -138,17 +135,16 @@ public class CategorieManagedBean implements Serializable {
 		} else {
 			return "suppr_categorie";
 		}
-		
+
 	}
-	
+
 	public String updateCategorie() {
-		
-	//		InputStream input = file.getInputStream();
-	//		this.categorie.setPhoto(IOUtils.toByteArray(input)); // Apache commons IO.
-		
-		
+
+		// InputStream input = file.getInputStream();
+		// this.categorie.setPhoto(IOUtils.toByteArray(input)); // Apache
+		// commons IO.
+
 		this.categorie = categorieService.updateCategorie(this.categorie);
-		
 
 		if (this.categorie.getIdCategorie() != 0) {
 			this.listeCategorie = categorieService.getAllCategorie();
@@ -161,28 +157,35 @@ public class CategorieManagedBean implements Serializable {
 		}
 	}
 
-
 	public String recupCategorieById() {
 		Categorie cOut = categorieService.getCategorieById(this.categorie.getIdCategorie());
-		cOut.setImage(this.image = "data:image/png;base64,"+Base64.encodeBase64String(cOut.getPhoto()));
-		if(cOut != null){
+		cOut.setImage("data:image/png;base64," + Base64.encodeBase64String(cOut.getPhoto()));
+		if (cOut != null) {
 			this.categorie = cOut;
 		} else {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Une erreur est survenue lors de la recherche."));
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("Une erreur est survenue lors de la recherche."));
 		}
-		
+
 		return "affiche_categorie";
 	}
 
 	public String recupAllCategorie() {
 		this.listeCategorie = categorieService.getAllCategorie();
+
 		if (listeCategorie.size() > 0) {
+			List<Categorie> listeTemp = new ArrayList<>();
+			for (Categorie categ : listeCategorie) {
+				categ.setImage("data:image/png;base64," + Base64.encodeBase64String(categ.getPhoto()));
+				listeTemp.add(categ);
+			}
+			this.setListeCategorie(listeTemp);
 			maSession.setAttribute("categorieListe", this.listeCategorie);
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage("Une erreur est survenue du chargement de la liste."));
+					new FacesMessage("Une erreur est survenue lors du chargement de la liste."));
 		}
 		return "affiche_categories";
 	}
-	
+
 }
