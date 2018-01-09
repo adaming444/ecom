@@ -21,15 +21,15 @@
 		
 		Designation : <h:inputText value="#{pMb.produit.designation}"/>
 		
- 		Description :	<h:inputFile value="#{pMb.produit.description}"/> 
+ 		Description :	<h:inputText value="#{pMb.produit.description}"/> 
 	
 		Prix : <h:inputText value="#{pMb.produit.prix}"/>
 		
 		Quantité : <h:inputText value="#{pMb.produit.quantite}"/>
 		
-		Photos : <h:inputText value="#{pMb.produit.photo}"/>
+		Photo :	<p:fileUpload mode="advanced" auto="true" fileUploadListener="#{pMb.upload}" update="idImage" />
+			<h:graphicImage id="idImage" value="#{pMb.image}" />
 		
-		Nom de la catégorie : <h:inputText value="#{pMb.produit.categorie.nomCategorie}"/>
 				
 		<p:commandButton value="modifier" action="#{pMb.updateProduit}"/>
 	

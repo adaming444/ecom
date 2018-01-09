@@ -47,4 +47,9 @@ public class ProduitServiceImpl implements IProduitService {
 		return produitDao.getProduitbyName(designation);
 	}
 
+	@Override
+	public int deleteProduitByName(String name) {
+		return produitDao.deleteProduitByName(name);
+	}
+
 }

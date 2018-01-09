@@ -160,11 +160,19 @@ public class ProduitManagedBean implements Serializable {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Une erreur est survenue lors de la recherche."));
 		}
-		return "recherche_produit";
+		return "affiche_produit";
 	}
 
 	public String deleteProduit() {
 		pService.deleteProduit(this.produit.getIdProduit());
+		// Recuperer la nouvelle liste de la bd
+		List<Produit> listeP = pService.getAllProduit();
+		// Mettre a jour la liste des voitures dans la session
+		maSession.setAttribute("produitList", listeP);
+		return "accueilAdmin";
+	}
+	public String deleteProduitByName() {
+		pService.deleteProduitByName(this.produit.getDesignation());
 		// Recuperer la nouvelle liste de la bd
 		List<Produit> listeP = pService.getAllProduit();
 		// Mettre a jour la liste des voitures dans la session

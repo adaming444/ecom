@@ -17,6 +17,8 @@ public interface IProduitDao {
 	public Produit updateProduit(Produit p);
 
 	public int deleteProduit(int id);
+	
+	public int deleteProduitByName(String name);
 
 	public Produit getProduitbyId(int id);
 	

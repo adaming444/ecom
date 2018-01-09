@@ -13,11 +13,13 @@
 
 <h:body>
 <h:form>
-<h:panelGrid columns="2">
+<h:panelGrid columns="3">
 Id du produit à supprimer : <h:inputText value="#{pMb.produit.idProduit}"/>
-Nom du produit à supprimer : <h:inputText value="#{pMb.produit.designation}"/>
-
 <p:commandButton value="Supprimer" action="#{pMb.deleteProduit}" update="@all"/>
+Nom du produit à supprimer : <h:inputText value="#{pMb.produit.designation}"/>
+<p:commandButton value="Supprimer" action="#{pMb.deleteProduitByName}" update="@all"/>
+
+
 </h:panelGrid>
 </h:form>
 

@@ -97,4 +97,17 @@ public class ProduitDaoImpl implements IProduitDao {
 				}
 				return null;
 	}
+
+	@Override
+	public int deleteProduitByName(String name) {
+		// Construire la requete JPQL
+				String req = "DELETE FROM Produit p WHERE p.designationt=:pdesignation";
+				// Creer un query
+				Query query = em.createQuery(req);
+				// Assigner les paramètres
+				query.setParameter("pdesignation", name);
+				// envoyer et recuperer la req
+				int verif = query.executeUpdate();
+				return verif;
+	}
 }
