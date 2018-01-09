@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import fr.adaming.model.Admin;
 import fr.adaming.model.Produit;
+import fr.adaming.service.CategorieServiceImpl;
+import fr.adaming.service.ICategorieService;
 import fr.adaming.service.IProduitService;
 import fr.adaming.service.ProduitServiceImpl;
 
@@ -21,6 +23,8 @@ public class ProduitManagedBean implements Serializable {
 
 	@EJB
 	private IProduitService pService;
+	
+	private ICategorieService cService = new CategorieServiceImpl();
 	private Produit produit;
 	private Admin admin;
 	private List<Produit> listeProduits;
@@ -70,6 +74,7 @@ public class ProduitManagedBean implements Serializable {
 
 	public String addProduit() {
 		// //Appel de la methode service
+		
 		this.produit = pService.addProduit(this.produit);
 		if (this.produit.getIdProduit() != 0) {
 			// Recuperer la nouvelle liste de la bd
@@ -80,7 +85,7 @@ public class ProduitManagedBean implements Serializable {
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Une erreur est survenue lors de l'ajout."));
-			return "ajoutP";
+			return "ajout_produit";
 		}
 	}
 
