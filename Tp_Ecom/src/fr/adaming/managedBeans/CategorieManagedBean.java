@@ -162,9 +162,9 @@ public class CategorieManagedBean implements Serializable {
 	}
 
 
-	public String getCategorieById() {
+	public String recupCategorieById() {
 		Categorie cOut = categorieService.getCategorieById(this.categorie.getIdCategorie());
-		
+		cOut.setImage(this.image = "data:image/png;base64,"+Base64.encodeBase64String(cOut.getPhoto()));
 		if(cOut != null){
 			this.categorie = cOut;
 		} else {
@@ -174,7 +174,7 @@ public class CategorieManagedBean implements Serializable {
 		return "recherche_categorie";
 	}
 
-	public String getAllCategorie() {
+	public String recupAllCategorie() {
 		this.listeCategorie = categorieService.getAllCategorie();
 		if (listeCategorie.size() > 0) {
 			maSession.setAttribute("categorieListe", this.listeCategorie);

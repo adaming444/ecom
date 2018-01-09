@@ -110,6 +110,14 @@ public class Categorie implements Serializable {
 		this.produit = produit;
 	}
 
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 
 	// methode tooString
 	@Override
