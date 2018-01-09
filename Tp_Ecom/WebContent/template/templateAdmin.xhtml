@@ -8,7 +8,6 @@
 
 <h:head>
 	<title>Page</title>
-	<h:outputStylesheet library="css" name="csstest.css"/>
 
 </h:head>
 
@@ -66,10 +65,10 @@
 
 				<f:facet name="options">
 					<p:inputText style="margin-right:10px" placeholder="Rechercher" action="#{cMB.rechercherClient}" />
-					
+					<p:commandButton  value="Logout"
+						icon="ui-icon-extlink" action="#{aMB.sedeconnecter}"/>
 				</f:facet>
 			</p:menubar>
 		</h:form>
-		<div id="footer" class="footer" style="background-color: red;height: 100px"></div>
 </h:body>
 </html>
