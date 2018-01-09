@@ -80,7 +80,7 @@ public class ProduitManagedBean implements Serializable {
 			// Recuperer la nouvelle liste de la bd
 			List<Produit> listeP = pService.getAllProduit();
 			// Mettre a jour la liste des voitures dans la session
-			maSession.setAttribute("produitList", this.listeProduits);
+			maSession.setAttribute("produitList", listeP);
 			return "accueilAdmin";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null,
@@ -95,12 +95,12 @@ public class ProduitManagedBean implements Serializable {
 			// Recuperer la nouvelle liste de la bd
 			List<Produit> listeP = pService.getAllProduit();
 			// Mettre a jour la liste des voitures dans la session
-			maSession.setAttribute("produitList", this.listeProduits);
+			maSession.setAttribute("produitList", listeP);
 			return "accueilAdmin";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Une erreur est survenue lors de la modification."));
-			return "modifierP";
+			return "modif_produit";
 		}
 	}
 
@@ -112,7 +112,7 @@ public class ProduitManagedBean implements Serializable {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Une erreur est survenue lors de la recherche."));
 		}
-		return "rechercherP";
+		return "recherche_produit";
 	}
 	
 	public String getProduitbyName(){
@@ -123,7 +123,7 @@ public class ProduitManagedBean implements Serializable {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Une erreur est survenue lors de la recherche."));
 		}
-		return "rechercherP";
+		return "recherche_produit";
 	}
 
 	public String deleteProduit() {
@@ -131,7 +131,7 @@ public class ProduitManagedBean implements Serializable {
 		// Recuperer la nouvelle liste de la bd
 		List<Produit> listeP = pService.getAllProduit();
 		// Mettre a jour la liste des voitures dans la session
-		maSession.setAttribute("produitList", this.listeProduits);
+		maSession.setAttribute("produitList", listeP);
 		return "accueilAdmin";
 	}
 
@@ -144,6 +144,6 @@ public class ProduitManagedBean implements Serializable {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Une erreur est survenue du chargement de la liste."));
 		}
-		return "#";
+		return "affiche_produits";
 	}
 }
