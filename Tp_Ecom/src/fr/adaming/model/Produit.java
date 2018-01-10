@@ -134,7 +134,17 @@ public class Produit implements Serializable {
 		this.ligneCommande = ligneCommande;
 	}
 
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+	
 	// Déclaration du ToString
+
+	
 
 	public String toString() {
 		return "Produit [idProduit=" + idProduit + ", designation=" + designation + ", description=" + description
