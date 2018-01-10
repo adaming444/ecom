@@ -7,16 +7,16 @@ public class Panier {
 	//Aucun attribut
 	
 	//Association avec ligne de commande
-	private List<LigneCommande> ligneCommande;
+	private List<LigneCommande> listeLigneCommande;
 
-	public List<LigneCommande> getLigneCommande() {
-		return ligneCommande;
+	public List<LigneCommande> getListeLigneCommande() {
+		return listeLigneCommande;
 	}
 
-	public void setLigneCommande(List<LigneCommande> ligneCommande) {
-		this.ligneCommande = ligneCommande;
+	public void setListeLigneCommande(List<LigneCommande> listeLigneCommande) {
+		this.listeLigneCommande = listeLigneCommande;
 	}
-	
-	
+
+
 	
 }
