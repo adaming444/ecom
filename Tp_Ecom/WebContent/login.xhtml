@@ -9,11 +9,15 @@
 <h:head>
 <title>Page Login</title>
 </h:head>
-<h:body>
+<h:body style="background-image: url('resources/images/confetti.gif')">
 <h:form>
 <h:panelGrid columns="2">
-Mail : <h:inputText value="#{aMb.admin.mail}"/>
-Password : <h:inputText value="#{aMb.admin.mdp}"/>
+<h:outputText style="color:white" value="Mail : "/>
+<h:inputText value="#{aMb.admin.mail}"/>
+
+<h:outputText style="color:white" value="Password : "/>
+<h:inputText value="#{aMb.admin.mdp}"/>
+
 <p:commandButton value="Se connecter" action="#{aMb.seConnecter}" update="@all"/>
 </h:panelGrid>
 </h:form>
