@@ -1,6 +1,8 @@
 package fr.adaming.managedBeans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -118,6 +120,32 @@ public class PanierManagedBean implements Serializable {
 		this.ligneCommande=null;
 	}
 	
+	public void deleteLigneCommande(){
+		// Recuperation de la ligne via son id
+		this.ligneCommande = this.ligneCommandeService.getLigneCommandeById(this.ligneCommande.getIdLigne());
+		// Soustrait le prix de la ligne au total
+		this.panier.setTotal(this.panier.getTotal()-this.ligneCommande.getPrix());
+		// appel de la methode delete de lignecommandeservice et recuperation du resultat pour test
+		int verif = this.ligneCommandeService.deleteLigneCommande(this.ligneCommande.getIdLigne());
+		// test sur reussite du delete
+		if(verif==1){
+			// instanciation d'une liste
+			List<LigneCommande> listeOut = new ArrayList<LigneCommande>();
+			// parcout de la liste
+			for (LigneCommande lc : this.panier.getListeLigneCommande()) {
+				
+				if(lc.getIdLigne() != this.ligneCommande.getIdLigne()){
+					// ajout a nouvelle liste si id different de ligne a delete
+					listeOut.add(lc);
+				}
+			}
+			// recuperation nouvelle liste
+			this.panier.setListeLigneCommande(listeOut);
+		} else {
+			// message echec + recuperation du total
+			this.panier.setTotal(this.panier.getTotal()+this.ligneCommande.getPrix());
+		}
 	
+	}
 	
 }
