@@ -145,7 +145,27 @@ public class PanierManagedBean implements Serializable {
 			// message echec + recuperation du total
 			this.panier.setTotal(this.panier.getTotal()+this.ligneCommande.getPrix());
 		}
+	this.ligneCommande = null;
+	}
 	
+	public void updateLigneCommande(){
+		this.ligneCommande.setPrix(this.ligneCommande.getQuantite()*this.produit.getPrix());
+		this.ligneCommande = this.ligneCommandeService.updateLigneCommande(this.ligneCommande, this.produit);
+		this.panier.setListeLigneCommande(this.panier.getListeLigneCommande());
+		this.panier.setTotal(this.panier.getTotal()+this.ligneCommande.getPrix());
+		this.ligneCommande=null;
+	}
+	
+	public void viderPanier(){
+		for (LigneCommande lc : this.panier.getListeLigneCommande()) {
+			this.ligneCommandeService.deleteLigneCommande(lc.getIdLigne());
+		}
+		this.panier.setTotal(0.0);
+		this.panier.setListeLigneCommande(null);
+	}
+	
+	public void validerPadire(){
+		
 	}
 	
 }

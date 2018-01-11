@@ -10,6 +10,22 @@ public class Panier {
 	//Association avec ligne de commande
 	private List<LigneCommande> listeLigneCommande;
 	
+	
+	//
+	public Panier() {
+		this.total = 0.0;
+	}
+	
+	
+
+	public Panier(double total, List<LigneCommande> listeLigneCommande) {
+		super();
+		this.total = total;
+		this.listeLigneCommande = listeLigneCommande;
+	}
+
+
+
 	// Getters et setters
 	public double getTotal() {
 		return total;
