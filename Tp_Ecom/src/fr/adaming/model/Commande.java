@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table (name="commandes")
@@ -38,6 +40,8 @@ public class Commande implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idCommande;
+	
+	@Temporal(TemporalType.DATE)
 	private Date dateCommande;
 	
 	//transformation uml en java
@@ -47,6 +51,7 @@ public class Commande implements Serializable {
 	@ManyToOne
 	@JoinColumn(referencedColumnName="idClient")
 	private Client client;
+	
 
 	public Long getIdCommande() {
 		return idCommande;
@@ -71,7 +76,7 @@ public class Commande implements Serializable {
 	public void setListeLigneCommande(List<LigneCommande> listeLigneCommande) {
 		this.listeLigneCommande = listeLigneCommande;
 	}
-
+	
 	public Commande() {
 		super();
 		// TODO Auto-generated constructor stub

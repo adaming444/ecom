@@ -2,6 +2,7 @@ package fr.adaming.managedBeans;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -119,7 +120,7 @@ public class CommandeManagedBean implements Serializable {
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Une erreur est survenue lors de la recherche."));
 		}
-		return "#";
+		return "rechercher_commande";
 	}
 	
 	public String getAllCommandes() {
