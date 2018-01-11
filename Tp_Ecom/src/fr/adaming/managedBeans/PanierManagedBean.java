@@ -3,6 +3,7 @@ package fr.adaming.managedBeans;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -13,9 +14,9 @@ import fr.adaming.model.Commande;
 import fr.adaming.model.LigneCommande;
 import fr.adaming.model.Panier;
 import fr.adaming.model.Produit;
-import fr.adaming.service.CommandeServiceImpl;
-import fr.adaming.service.LigneCommandeServiceImpl;
-import fr.adaming.service.ProduitServiceImpl;
+import fr.adaming.service.ICommandeService;
+import fr.adaming.service.ILigneCommandeService;
+import fr.adaming.service.IProduitService;
 
 @ManagedBean(name = "panMB")
 @SessionScoped
@@ -27,11 +28,14 @@ public class PanierManagedBean implements Serializable {
 	private Produit produit;
 	private Commande commande;
 
-	private LigneCommandeServiceImpl ligneCommandeService;
+	@EJB
+	private ILigneCommandeService ligneCommandeService;
 
-	private ProduitServiceImpl produitService;
+	@EJB
+	private IProduitService produitService;
 
-	private CommandeServiceImpl commandeService;
+	@EJB
+	private ICommandeService commandeService;
 
 	private Admin admin;
 
@@ -93,21 +97,22 @@ public class PanierManagedBean implements Serializable {
 		this.admin = admin;
 	}
 
-	public void setLigneCommandeService(LigneCommandeServiceImpl ligneCommandeService) {
+	public void setLigneCommandeService(ILigneCommandeService ligneCommandeService) {
 		this.ligneCommandeService = ligneCommandeService;
 	}
 
-	public void setProduitService(ProduitServiceImpl produitService) {
+	public void setProduitService(IProduitService produitService) {
 		this.produitService = produitService;
 	}
 
-	public void setCommandeService(CommandeServiceImpl commandeService) {
+	public void setCommandeService(ICommandeService commandeService) {
 		this.commandeService = commandeService;
 	}
 
 	// Methodes metier
 	public void addLigneCommande(){
 		this.ligneCommande.setPrix(this.ligneCommande.getQuantite()*this.produit.getPrix());
+		this.ligneCommande = this.ligneCommandeService.addLigneCommande(this.ligneCommande, this.produit);
 		this.panier.getListeLigneCommande().add(this.ligneCommande);
 		this.panier.setTotal(this.panier.getTotal()+this.ligneCommande.getPrix());
 		this.ligneCommande=null;
