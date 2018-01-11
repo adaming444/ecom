@@ -1,5 +1,6 @@
 package fr.adaming.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -22,16 +23,14 @@ public class LigneCommandeServiceImpl implements ILigneCommandeService {
 	}
 
 	@Override
-	public LigneCommande addLigneCommande(LigneCommande lc, Produit p, Commande c) {
-		lc.setCommande(c);
+	public LigneCommande addLigneCommande(LigneCommande lc, Produit p) {
 		lc.setProduit(p);
 		lc.setPrix(lc.getQuantite()*p.getPrix());
 		return ligneCommandeDao.addLigneCommande(lc);
 	}
 
 	@Override
-	public LigneCommande updateLigneCommande(LigneCommande lc, Produit p, Commande c) {
-		lc.setCommande(c);
+	public LigneCommande updateLigneCommande(LigneCommande lc, Produit p) {
 		lc.setProduit(p);
 		lc.setPrix(lc.getQuantite()*p.getPrix());
 		return ligneCommandeDao.updateLigneCommande(lc);
@@ -44,7 +43,6 @@ public class LigneCommandeServiceImpl implements ILigneCommandeService {
 
 	@Override
 	public LigneCommande getLigneCommandeById(Long id) {
-		// TODO Auto-generated method stub
 		return ligneCommandeDao.getLigneCommandeById(id);
 	}
 
@@ -53,4 +51,20 @@ public class LigneCommandeServiceImpl implements ILigneCommandeService {
 		return ligneCommandeDao.getAllLigneCommande();
 	}
 
+	public List<LigneCommande> associerCommande(List<LigneCommande> listLC, Commande c){
+		// Instanciation nouvelle liste
+		List<LigneCommande> listOut = new ArrayList<LigneCommande>();
+		for (LigneCommande lc : listLC) {
+			// Association des lignes a leur commande
+			lc.setCommande(c);
+			// mise a jour de la bdd
+			this.updateLigneCommande(lc, lc.getProduit());
+			// Remplissage de la nouvelle liste
+			listOut.add(lc);
+		}
+		// retourne la liste des lignes avec l'association a la commande
+		return listOut;
+	}
+
+	
 }
