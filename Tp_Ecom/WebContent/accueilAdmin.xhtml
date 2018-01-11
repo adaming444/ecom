@@ -8,18 +8,18 @@
 <title>Bienvenue sur le site de SuperCarnaval !</title>
 
 </h:head>
-<h:body style="background-image: url('resources/images/confetti.gif')">
+<h:body>
 
 
 <ui:composition template="/template/templateAdmin.xhtml">
 <ui:define name="corps">
-<h1>C'est la fête ! Vous êtes connecté en tant qu'administrateur ! Que souhaitez vous gérer aujourd'hui ?</h1>
+<h:outputText style="color:white; font-size:30px" value="C'est la fête ! Vous êtes connecté en tant qu'administrateur ! Que souhaitez vous gérer aujourd'hui ?"/>
 <h:form>
 <p:commandButton value="Ajouter Produit" action="ajout_produit" update="@all"/>
 <p:commandButton value="Modifier Produit" action="modif_produit" update="@all"/>
 <p:commandButton value="Supprimer Produit" action="suppr_produit" update="@all"/>
 <p:commandButton value="Afficher tous les produits" action="#{pMb.getAllProduits}" update="@all"/>
-<p:commandButton value="Rechercher un produit" action="recherche_produit" update="@all"/>
+<p:commandButton value="Rechercher un produit" action="affiche_produit" update="@all"/>
 <br/>
 <hr/>
 <p:commandButton value="Ajouter Catégorie" action="ajout_categorie" update="@all"/>
@@ -33,7 +33,14 @@
 <p:commandButton value="Supprimer Client" action="suppr_client" update="@all"/>
 <p:commandButton value="Modifier Client" action="modif_client" update="@all"/>
 <p:commandButton value="Afficher tous les Clients" action="#{clMB.getAllClients}" update="@all"/>
-<p:commandButton value="Rechercher Client" action="recherche_client" update="@all"/>
+<p:commandButton value="Rechercher Client" action="rechercher_client" update="@all"/>
+<br/>
+<hr/>
+<p:commandButton style="color:white; background-color:black" value="Ajouter Commande" action="ajout_commande" update="@all"/>
+<p:commandButton style="color:white; background-color:black" value="Supprimer Commande" action="suppr_commande" update="@all"/>
+<p:commandButton style="color:white; background-color:black" value="Modifier Commande" action="modif_commande" update="@all"/>
+<p:commandButton style="color:white; background-color:black" value="Afficher tous les Commandes" action="#{comMB.getAllCommandes}" update="@all"/>
+<p:commandButton style="color:white; background-color:black" value="Rechercher Commande" action="recherche_commande" update="@all"/>
 </h:form>
 
 <h:messages style="text-align:center; color:red"/>

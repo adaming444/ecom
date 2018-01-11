@@ -97,7 +97,7 @@ public class ClientManagedBean {
 			return "success";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Une erreur est survenue lors de la modification."));
-			return "#";
+			return "modif_client";
 		}
 
 	}
@@ -109,7 +109,7 @@ public class ClientManagedBean {
 			return "accueilAdmin";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Une erreur est survenue lors de la suppression."));
-			return "suppr.client";
+			return "suppr_client";
 		}
 	}
 
@@ -120,7 +120,7 @@ public class ClientManagedBean {
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Une erreur est survenue lors de la recherche."));
 		}
-		return "#";
+		return "rechercher_client";
 	}
 	
 	public String getAllClients() {
