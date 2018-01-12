@@ -120,7 +120,7 @@ public class ProduitManagedBean implements Serializable {
 
 	// Les methodes metiers
 
-	public String addProduit() {
+	public String addProduit() throws Exception {
 		// //Appel de la methode service
 
 		this.produit = pService.addProduit(this.produit);
@@ -131,6 +131,7 @@ public class ProduitManagedBean implements Serializable {
 			this.listeProduits = pService.getAllProduit();
 			// Mettre a jour la liste des produits dans la session
 			maSession.setAttribute("produitList", this.listeProduits);
+			pService.confirmAddProd();
 			return "accueilAdmin";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null,
@@ -302,5 +303,4 @@ public class ProduitManagedBean implements Serializable {
 			paragraph.add(new Paragraph(" "));
 		}
 	}
-
 }

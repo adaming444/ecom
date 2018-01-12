@@ -22,5 +22,7 @@ public interface IProduitService {
 	public Produit getProduitbyId(int id);
 	
 	public Produit getProduitbyName(String designation);
+	
+	public void confirmAddProd() throws Exception;
 
 }

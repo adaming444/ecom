@@ -1,69 +1,20 @@
-package fr.adaming.service;
+package fr.adaming.test;
 
-import java.util.List;
 import java.util.Properties;
 
-import javax.ejb.EJB;
-import javax.ejb.Stateful;
-import javax.ejb.Stateless;
 import javax.mail.Message;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import fr.adaming.dao.IProduitDao;
-import fr.adaming.dao.ProduitDaoImpl;
-import fr.adaming.model.Produit;
+public class testMail {
 
-@Stateful
-public class ProduitServiceImpl implements IProduitService {
-	
-	//Transformation de l'association UML en java
-	@EJB
-	private IProduitDao produitDao;
-
-	@Override
-	public List<Produit> getAllProduit() {
-		return produitDao.getAllProduit();
-	}
-
-	@Override
-	public Produit addProduit(Produit p) {
-		return produitDao.addProduit(p);
-	}
-
-	@Override
-	public Produit updateProduit(Produit p) {
-		return produitDao.updateProduit(p);
-	}
-
-	@Override
-	public int deleteProduit(int id) {
-		return produitDao.deleteProduit(id);
-	}
-
-	@Override
-	public Produit getProduitbyId(int id) {
-		return produitDao.getProduitbyId(id);
-	}
-
-	@Override
-	public Produit getProduitbyName(String designation) {
-		return produitDao.getProduitbyName(designation);
-	}
-
-	@Override
-	public int deleteProduitByName(String name) {
-		return produitDao.deleteProduitByName(name);
-	}
-
-	@Override
-	public void confirmAddProd() throws Exception {
-		
-		String smtpHost = "smtp.gmail.com";
+	public static void main (String[] args) throws Exception {
+		 
+	    String smtpHost = "smtp.gmail.com";
 	    String from = "adaming444@gmail.com";
-	    String to = "adaming444@gmail.com";
+	    String to = "arnaudfardin@gmail.com";
 	    String username = "adaming444@gmail.com";
 	    String password = "adaming44";
 	 
@@ -91,7 +42,6 @@ public class ProduitServiceImpl implements IProduitService {
 	 
 	    tr.sendMessage(message,message.getAllRecipients());
 	    tr.close();
-		
-	}
-
+	 
+	  }
 }
