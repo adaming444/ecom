@@ -5,38 +5,50 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-	
-	<h:head>
-	<title> Page </title>
-	
-	</h:head>
+
+<h:head>
+
+	<title>Page</title>
+
+</h:head>
 
 <h:body>
 
-<h:form enctype="multipart/form-data">
+	<ui:composition template="/template/templateAdmin.xhtml">
 
-	<h:panelGrid columns="2">
+		<ui:define name="corps">
+
+			<h:form enctype="multipart/form-data">
+
+				<h:panelGrid columns="2">
 		
-		Id du produit : <h:inputText value="#{pMb.produit.idProduit}"/>
+					Id du produit : <h:inputText value="#{pMb.produit.idProduit}" />
 		
-		Designation : <h:inputText value="#{pMb.produit.designation}"/>
+					Designation : <h:inputText value="#{pMb.produit.designation}" />
 		
- 		Description :	<h:inputText value="#{pMb.produit.description}"/> 
+ 					Description :	<h:inputText value="#{pMb.produit.description}" /> 
 	
-		Prix : <h:inputText value="#{pMb.produit.prix}"/>
+					Prix : <h:inputText value="#{pMb.produit.prix}" />
 		
-		Quantité : <h:inputText value="#{pMb.produit.quantite}"/>
+					Quantité : <h:inputText value="#{pMb.produit.quantite}" />
 		
-		Photo :	<p:fileUpload mode="advanced" auto="true" fileUploadListener="#{pMb.upload}" update="idImage" />
-			<h:graphicImage id="idImage" value="#{pMb.image}" />
-		
-				
-		<p:commandButton value="modifier" action="#{pMb.updateProduit}"/>
-	
-	</h:panelGrid>
+					Photo :	<p:fileUpload mode="advanced" auto="true"
+						fileUploadListener="#{pMb.upload}" update="idImage" />
 
+					<h:graphicImage id="idImage" value="#{pMb.image}" />
 
+					<p:commandButton value="modifier" action="#{pMb.updateProduit}" />
 
-</h:form>
+				</h:panelGrid>
+
+			</h:form>
+
+			<p:growl id="message" />
+
+		</ui:define>
+
+	</ui:composition>
+
 </h:body>
+
 </html>

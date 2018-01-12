@@ -5,24 +5,44 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-	
-	<h:head>
-	<title> Page </title>
-	
-	</h:head>
+
+<h:head>
+	<title>Page</title>
+
+</h:head>
 
 <h:body>
-<h:form>
-<h:panelGrid columns="3">
-Id du produit à supprimer : <h:inputText value="#{pMb.produit.idProduit}"/>
-<p:commandButton value="Supprimer" action="#{pMb.deleteProduit}" update="@all"/>
-Nom du produit à supprimer : <h:inputText value="#{pMb.produit.designation}"/>
-<p:commandButton value="Supprimer" action="#{pMb.deleteProduitByName}" update="@all"/>
 
+	<ui:composition template="/template/templateAdmin.xhtml">
 
-</h:panelGrid>
-</h:form>
+		<ui:define name="corps">
 
-<h:messages style="text-align:center; color:red"/>
+			<h:form>
+
+				<h:panelGrid columns="3">
+
+					Id du produit à supprimer : <h:inputText
+						value="#{pMb.produit.idProduit}" />
+
+					<p:commandButton value="Supprimer" action="#{pMb.deleteProduit}"
+						update="@all" />
+
+					Nom du produit à supprimer : <h:inputText
+						value="#{pMb.produit.designation}" />
+
+					<p:commandButton value="Supprimer"
+						action="#{pMb.deleteProduitByName}" update="@all" />
+
+				</h:panelGrid>
+
+			</h:form>
+
+			<p:growl id="message" />
+
+		</ui:define>
+
+	</ui:composition>
+
 </h:body>
+
 </html>

@@ -1,7 +1,7 @@
 
  
 body{
-background-image: url("#{ resource [ 'images:confetti.gif' }");
+background-color: yellow;
 }
  
 
@@ -10,3 +10,15 @@ background-image: url("#{ resource [ 'images:confetti.gif' }");
 	background-color:red;
 }
 
+
+#madivdemerde{
+	height: 500px;
+	 display: flex;
+	 
+	 }
+#madivdemerde #mefaitpaschier{
+	 display: flex;
+	 flex-direction:column;
+	 justify-content: space-between;
+	
+}

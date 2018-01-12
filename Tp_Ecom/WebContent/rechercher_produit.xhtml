@@ -7,7 +7,7 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 
-	<title>Page affichage tous les produits</title>
+	<title>Page recherche produit</title>
 
 </h:head>
 
@@ -16,6 +16,17 @@
 	<ui:composition template="/template/templateAdmin.xhtml">
 
 		<ui:define name="corps">
+
+			<h:form>
+				<h:panelGrid columns="2">
+	
+				Id Produit : <h:inputText value="#{pMb.produit.idProduit}" />
+
+					<p:commandButton value="Rechercher"
+						action="#{pMb.getProduitbyName}" update="idTable message" />
+
+				</h:panelGrid>
+			</h:form>
 
 			<p:dataTable id="idTable" var="pdt" value="#{pMb.produit}">
 
@@ -44,7 +55,7 @@
 				</p:column>
 
 			</p:dataTable>
-			
+
 			<p:growl id="message" />
 
 		</ui:define>
@@ -52,6 +63,5 @@
 	</ui:composition>
 
 </h:body>
-
 
 </html>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-		xmlns:h="http://java.sun.com/jsf/html"
-		xmlns:f="http://java.sun.com/jsf/core"
-		xmlns:ui="http://java.sun.com/jsf/facelets"
-		xmlns:p="http://primefaces.org/ui">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 
 	<title>Page suppression categorie</title>
@@ -13,21 +13,30 @@
 
 <h:body>
 
-<h:form>
+	<ui:composition template="/template/templateAdmin.xhtml">
 
-	<h:panelGrid columns="2">
+		<ui:define name="corps">
+
+			<h:form>
+
+				<h:panelGrid columns="2">
 		
-		id de la Categorie : <h:inputText value="#{catMB.categorie.idCategorie}"/>
-						
-		<p:commandButton value="supprimer" action="#{catMB.deleteCategorie}"/>
-	
-	</h:panelGrid>
+					Id de la Categorie : <h:inputText
+						value="#{catMB.categorie.idCategorie}" />
 
+					<p:commandButton value="supprimer"
+						action="#{catMB.deleteCategorie}" />
 
+				</h:panelGrid>
 
-</h:form>
+			</h:form>
+
+			<p:growl id="message" />
+
+		</ui:define>
+
+	</ui:composition>
 
 </h:body>
-
 
 </html>

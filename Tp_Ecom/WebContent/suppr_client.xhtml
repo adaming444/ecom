@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-		xmlns:h="http://java.sun.com/jsf/html"
-		xmlns:f="http://java.sun.com/jsf/core"
-		xmlns:ui="http://java.sun.com/jsf/facelets"
-		xmlns:p="http://primefaces.org/ui">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
 <h:head>
 
 	<title>Page suppression client</title>
@@ -13,21 +14,29 @@
 
 <h:body>
 
-<h:form>
+	<ui:composition template="/template/templateAdmin.xhtml">
 
-	<h:panelGrid columns="2">
+		<ui:define name="corps">
+
+			<h:form>
+
+				<h:panelGrid columns="2">
 		
-		Id du Client : <h:inputText value="#{clMB.client.idClient}"/>
-						
-		<p:commandButton value="Supprimer" action="#{clMB.deleteClient}"/>
-	
-	</h:panelGrid>
+					Id du Client : <h:inputText value="#{clMB.client.idClient}" />
 
-</h:form>
+					<p:commandButton value="Supprimer" action="#{clMB.deleteClient}"
+						update="@all" />
 
-<h:messages style="text-align:center; color:red"/>
+				</h:panelGrid>
+
+			</h:form>
+
+			<p:growl id="message" />
+
+		</ui:define>
+
+	</ui:composition>
 
 </h:body>
-
 
 </html>

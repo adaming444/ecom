@@ -1,39 +1,48 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-		xmlns:h="http://java.sun.com/jsf/html"
-		xmlns:f="http://java.sun.com/jsf/core"
-		xmlns:ui="http://java.sun.com/jsf/facelets"
-		xmlns:p="http://primefaces.org/ui">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 
-	<title>Page affichage liste catégorie</title>
+	<title>Page affichage des catégories</title>
 
 </h:head>
 
 <h:body>
 
-	<p:dataTable id="idTable" var="cat" value="#{sessionScope.categorieListe}">
-		<p:column headerText="Id">
-			<h:outputText value="#{cat.idCategorie}" />
-		</p:column>
+	<ui:composition template="/template/templateAdmin.xhtml">
 
-		<p:column headerText="Nom de la catégorie">
-			<h:outputText value="#{cat.nomCategorie}" />
-		</p:column>
+		<ui:define name="corps">
 
-		<p:column headerText="Photo">
-			<h:graphicImage value="#{cat.image}"  width="100 px" height="100 px"/>
-		</p:column>
+			<p:dataTable id="idTable" var="cat"
+				value="#{sessionScope.categorieListe}">
 
-		<p:column headerText="description">
-			<h:outputText value="#{cat.description}" />
-		</p:column>
+				<p:column headerText="Id">
+					<h:outputText value="#{cat.idCategorie}" />
+				</p:column>
 
-	</p:dataTable>
+				<p:column headerText="Nom de la catégorie">
+					<h:outputText value="#{cat.nomCategorie}" />
+				</p:column>
 
-<p:messages id="idMsg" style="color : darkred"/>
+				<p:column headerText="Photo">
+					<h:graphicImage value="#{cat.image}" width="100 px" height="100 px" />
+				</p:column>
 
+				<p:column headerText="Description">
+					<h:outputText value="#{cat.description}" />
+				</p:column>
+
+			</p:dataTable>
+
+			<p:growl id="message" />
+
+		</ui:define>
+
+	</ui:composition>
 
 </h:body>
 

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-		xmlns:h="http://java.sun.com/jsf/html"
-		xmlns:f="http://java.sun.com/jsf/core"
-		xmlns:ui="http://java.sun.com/jsf/facelets"
-		xmlns:p="http://primefaces.org/ui">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
 <h:head>
 
 	<title>Page modification categorie</title>
@@ -13,30 +14,39 @@
 
 <h:body>
 
-<h:form enctype="multipart/form-data">
+	<ui:composition template="/template/templateAdmin.xhtml">
 
-	<h:panelGrid columns="2">
+		<ui:define name="corps">
+
+			<h:form enctype="multipart/form-data">
+
+				<h:panelGrid columns="2">
+			
+					Id de la Categorie : <h:inputText
+						value="#{catMB.categorie.idCategorie}" />
 		
-		id de la Categorie : <h:inputText value="#{catMB.categorie.idCategorie}"/>
+					Nom de la Categorie : <h:inputText
+						value="#{catMB.categorie.nomCategorie}" />
 		
-		nom de la Categorie : <h:inputText value="#{catMB.categorie.nomCategorie}"/>
+					Description : <h:inputText value="#{catMB.categorie.description}" />
 		
-		description : <h:inputText value="#{catMB.categorie.description}"/>
-		
-		Photo :	<p:fileUpload mode="advanced"  auto="true" fileUploadListener="#{catMB.upload}" update="idImage" />
+					Photo :	<p:fileUpload mode="advanced" auto="true"
+						fileUploadListener="#{catMB.upload}" update="idImage" />
 
-		<h:graphicImage id="idImage" value="#{catMB.image}"/>
-				
-		<p:commandButton value="modifier" action="#{catMB.updateCategorie}"/>
-	
-	</h:panelGrid>
+					<h:graphicImage id="idImage" value="#{catMB.image}" />
 
+					<p:commandButton value="modifier" action="#{catMB.updateCategorie}" />
 
+				</h:panelGrid>
 
-</h:form>
+			</h:form>
 
+			<p:growl id="message" />
+
+		</ui:define>
+
+	</ui:composition>
 
 </h:body>
-
 
 </html>

@@ -5,10 +5,9 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-	
 <h:head>
 
-	<title>Page recherche commande</title>
+	<title>Page recherche categorie</title>
 
 </h:head>
 
@@ -19,30 +18,34 @@
 		<ui:define name="corps">
 
 			<h:form>
-			
+
 				<h:panelGrid columns="2">
 	
-					Id Commande : <h:inputText value="#{comMB.commande.idCommande}" />
+					Id Catégorie : <h:inputText value="#{catMB.categorie.idCategorie}" />
 
-					<p:commandButton value="Rechercher"
-						action="#{comMB.getCommandeById}" update="idTable message" />
+					<p:commandButton value="chercher"
+						action="#{catMB.recupCategorieById}" update="@all" />
 
 				</h:panelGrid>
 
 			</h:form>
 
-			<p:dataTable id="idTable" var="com" value="#{comMB.commande}">
+			<p:dataTable id="idTable" var="cat" value="#{catMB.categorie}">
 
 				<p:column headerText="Id">
-					<h:outputText value="#{comMB.commande.idCommande}" />
+					<h:outputText value="#{cat.idCategorie}" />
 				</p:column>
 
-				<p:column headerText="Date de commande (aaaa-MM-jj)">
-					<h:outputText value="#{comMB.commande.dateCommande}" />
+				<p:column headerText="Nom de la catégorie">
+					<h:outputText value="#{cat.nomCategorie}" />
 				</p:column>
 
-				<p:column headerText="Date de commande (aaaa-MM-jj)">
-					<h:outputText value="#{comMB.commande.dateCommande}" />
+				<p:column headerText="Photo">
+					<h:graphicImage value="#{cat.image}" />
+				</p:column>
+
+				<p:column headerText="description">
+					<h:outputText value="#{cat.description}" />
 				</p:column>
 
 			</p:dataTable>
@@ -54,5 +57,4 @@
 	</ui:composition>
 
 </h:body>
-
 </html>

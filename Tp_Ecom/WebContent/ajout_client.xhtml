@@ -13,25 +13,33 @@
 
 <h:body>
 
-	<h:form>
+	<ui:composition template="/template/templateAdmin.xhtml">
 
-		<h:panelGrid columns="2">
+		<ui:define name="corps">
+
+			<h:form>
+
+				<h:panelGrid columns="2">
 		
-		Nom  : <h:inputText value="#{clMB.client.nomClient}" />
+				Nom  : <h:inputText value="#{clMB.client.nomClient}" />
 			
-		Email : <h:inputText value="#{clMB.client.email}" />
+				Email : <h:inputText value="#{clMB.client.email}" />
 		
-		Téléphone : <h:inputText value="#{clMB.client.tel}" />
-		
-		Adresse : <h:inputText value="#{clMB.client.adresse}" />
+				Téléphone : <h:inputText value="#{clMB.client.tel}" />
+			
+				Adresse : <h:inputText value="#{clMB.client.adresse}" />
 
-		<p:commandButton value="ajouter" action="#{clMB.addClient}" />
+					<p:commandButton value="ajouter" action="#{clMB.addClient}" />
 
-		</h:panelGrid>
+				</h:panelGrid>
 
-	</h:form>
+			</h:form>
 
-<h:messages style="text-align:center; color:red"/>
+			<p:growl id="message" />
+
+		</ui:define>
+
+	</ui:composition>
 
 </h:body>
 

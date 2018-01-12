@@ -7,53 +7,61 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
+
 	<title>Formulaire de recherche client</title>
 
 </h:head>
 
 <h:body>
-	<h:form>
-		<h:panelGrid columns="2">
+
+	<ui:composition template="/template/templateAdmin.xhtml">
+
+		<ui:define name="corps">
 		
-			Id:<p:inputText value="#{clMB.client.idClient}" />
-
-			<p:commandButton value="Rechercher via Id"
-				action="#{clMB.getClientById}" icon="ui-icon-disk"
-				update="@all" />
-
-			<p:commandButton value="Rechercher via le Nom"
-				action="#{pMb.getProduitbyName}" icon="ui-icon-disk"
-				update="@all" />
-
-		</h:panelGrid>
-	</h:form>
-	
-	<p:dataTable id="idTable" var="cl" value="#{clMB.client}">
-	
-		<p:column headerText="Id Client">
-			<h:outputText value="#{cl.idClient}" />
-		</p:column>
-
-		<p:column headerText="Nom du client">
-			<h:outputText value="#{cl.nomClient}" />
-		</p:column>
-
-		<p:column headerText="Adresse">
-			<h:outputText value="#{cl.adresse}"/>
-		</p:column>
-
-		<p:column headerText="E-mail">
-			<h:outputText value="#{cl.email}" />
-		</p:column>
+			<h:form>
+				<h:panelGrid columns="2">
 		
-		<p:column headerText="Téléphone">
-			<h:outputText value="#{cl.tel}" />
-		</p:column>
+				Id:<p:inputText value="#{clMB.client.idClient}" />
 
-	</p:dataTable>
-	
-	<h1>
-		<p:messages id="messages" showDetail="true" closable="true"/>
-	</h1>
+					<p:commandButton value="Rechercher via Id"
+						action="#{clMB.getClientById}" icon="ui-icon-disk" update="@all" />
+
+					<p:commandButton value="Rechercher via le Nom"
+						action="#{pMb.getProduitbyName}" icon="ui-icon-disk" update="@all" />
+
+				</h:panelGrid>
+			</h:form>
+
+			<p:dataTable id="idTable" var="cl" value="#{clMB.client}">
+
+				<p:column headerText="Id Client">
+					<h:outputText value="#{cl.idClient}" />
+				</p:column>
+
+				<p:column headerText="Nom du client">
+					<h:outputText value="#{cl.nomClient}" />
+				</p:column>
+
+				<p:column headerText="Adresse">
+					<h:outputText value="#{cl.adresse}" />
+				</p:column>
+
+				<p:column headerText="E-mail">
+					<h:outputText value="#{cl.email}" />
+				</p:column>
+
+				<p:column headerText="Téléphone">
+					<h:outputText value="#{cl.tel}" />
+				</p:column>
+
+			</p:dataTable>
+
+			<p:growl id="message" />
+
+		</ui:define>
+
+	</ui:composition>
+
 </h:body>
+
 </html>
