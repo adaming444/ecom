@@ -223,8 +223,8 @@ public class ProduitManagedBean implements Serializable {
 	}
 
 	public void createPdf() throws IOException {
-		Rectangle pageSize = new Rectangle(780, 525);
-		Document document = new Document(pageSize);
+		
+		Document document = new Document();
 		String chemin = "C:\\Users\\intiformation\\Desktop\\testlistProd.pdf";
 
 		try {
@@ -250,8 +250,6 @@ public class ProduitManagedBean implements Serializable {
 
 	private static void addInfoPage(Document document) throws DocumentException,  IOException {
 		Paragraph preface = new Paragraph();
-		//String Img = "/Tp_Ecom/WebContent/resources/images/carnaval.jpg";
-		//Image image = Image.getInstance(Img);
 		
 		Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 24, Font.BOLD, BaseColor.RED);
 		Font catFont2 = new Font(Font.FontFamily.TIMES_ROMAN, 20, Font.NORMAL, BaseColor.BLACK);
