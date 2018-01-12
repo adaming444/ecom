@@ -22,3 +22,15 @@ background-color: yellow;
 	 justify-content: space-between;
 	
 }
+
+.myLayoutStyleClass1 .ui-layout-unit-content{
+   background: yellow;
+}
+
+.myLayoutStyleClass2 .ui-layout-unit-content{
+   background: green;
+}
+
+.myLayoutStyleClass3 .ui-layout-unit-content{
+   background: blue;
+}
