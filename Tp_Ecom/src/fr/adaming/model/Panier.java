@@ -4,14 +4,14 @@ import java.util.List;
 
 public class Panier {
 
-	//Aucun attribut
+	// attribut du modele
 	private double total;
 	
-	//Association avec ligne de commande
+	// Association avec ligne de commande
 	private List<LigneCommande> listeLigneCommande;
 	
 	
-	//
+	// constructeur
 	public Panier() {
 		this.total = 0.0;
 	}
