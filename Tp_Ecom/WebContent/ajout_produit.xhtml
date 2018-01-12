@@ -27,6 +27,9 @@ Photo :	<p:fileUpload mode="advanced" auto="true" fileUploadListener="#{pMb.uplo
 			<p:commandButton value="Ajouter" action="#{pMb.addProduit}"/>
 		</h:panelGrid>
 	</h:form>
+<h:form>
+<p:commandButton value="Generer la liste de produit" action="#{pMb.createPdf}"/>
+</h:form>
 
 	<h:messages style="text-align:center; color:red" />
 </h:body>
