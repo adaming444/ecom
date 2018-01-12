@@ -53,7 +53,7 @@ public class PanierManagedBean implements Serializable {
 	@PostConstruct
 	public void init() {
 		this.maSession = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-		// ajouter nettoyage des ligne sans commande
+		// ajouter nettoyage des ligne sans commande delete si sans id commande
 	}
 
 	// Getters et setter

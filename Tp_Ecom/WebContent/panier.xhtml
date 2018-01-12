@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+	<title>Page visuel panier</title>
+
+</h:head>
+
+<h:body>
+
+	<ui:composition template="/template/templateAdmin.xhtml">
+
+		<ui:define name="corps">
+
+			<p:dataTable id="idTable" var="lc" value="#{panMB.ligneCommande}">
+
+				<p:column headerText="visuel">
+					<h:graphicImage value="#{lc.produit.image}" width="100 px"
+						height="100 px" />
+				</p:column>
+
+				<p:column headerText="Produit">
+					<h:outputText value="#{lc.produit.designation}" />
+				</p:column>
+
+				<p:column headerText="Prix unitaire">
+					<h:outputText value="#{lc.produit.prix}" />
+				</p:column>
+
+				<p:column headerText="Quantité">
+					<h:outputText value="#{lc.quantite}" />
+				</p:column>
+
+			</p:dataTable>
+
+			<h:form>
+				<p:commandButton value="Vider panier" action="#{panMB.viderPanier}"
+					update="@all" />
+				<p:commandButton value="Passer la commande"
+					action="#{panMB.validerPanier}" update="@all" />
+
+			</h:form>
+
+
+		</ui:define>
+
+	</ui:composition>
+
+</h:body>
+
+
+</html>
