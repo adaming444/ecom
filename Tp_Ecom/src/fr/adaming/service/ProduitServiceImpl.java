@@ -59,7 +59,7 @@ public class ProduitServiceImpl implements IProduitService {
 	}
 
 	@Override
-	public void confirmAddProd() throws Exception {
+	public void confirmAddProd( Produit p) throws Exception {
 		
 		String smtpHost = "smtp.gmail.com";
 	    String from = "adaming444@gmail.com";
@@ -80,7 +80,10 @@ public class ProduitServiceImpl implements IProduitService {
 	    message.setFrom(new InternetAddress(from));
 	    message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 	    message.setSubject("Confirmation ajout produit");
-	    message.setText("Vous avez bien ajouter le produit :");
+//	    message.setText("Vous avez bien ajouter le produit :"+p.getDesignation());
+//	    message.setText("La quantité du produit ajouté est de :  :"+p.getQuantite());
+//	    message.setText(" Descriptif du produit :"+p.getDescription());
+	    message.setText("Vous avez bien ajouter le produit :"+p.getDesignation()+'\n'+" Descriptif du produit :"+p.getDescription()+'\n'+"Le prix unitaire du produit est :"+p.getPrix()+'\n'+"La quantité du produit ajouté est de :  :"+p.getQuantite());
 	 
 	    Transport tr = session.getTransport("smtp");
 	    tr.connect(smtpHost, username , password);

@@ -185,7 +185,7 @@ public class PanierManagedBean implements Serializable {
 		this.panier.setListeLigneCommande(new ArrayList<LigneCommande>());
 	}
 
-	public String validerPanier() {
+	public String validerPanier() throws Exception {
 		// Creation de la commande a la date actuel + ajout dans bdd
 		this.commande = commandeService.addCommande(new Commande(new Date()));
 		// attribution des lignes a une commande
@@ -199,6 +199,8 @@ public class PanierManagedBean implements Serializable {
 			pOut.setQuantite(pOut.getQuantite() - lc.getQuantite());
 			// actualisation dans la bdd du stock
 			this.produitService.updateProduit(pOut);
+			//Envoie du mail de validation commande
+			commandeService.confirmCommandeMail(this.commande);
 		}
 		this.panier = new Panier();
 		return "accueil";

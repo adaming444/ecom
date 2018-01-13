@@ -23,6 +23,6 @@ public interface IProduitService {
 	
 	public Produit getProduitbyName(String designation);
 	
-	public void confirmAddProd() throws Exception;
+	public void confirmAddProd(Produit p) throws Exception;
 
 }

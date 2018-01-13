@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Local;
 
 import fr.adaming.model.Commande;
+import fr.adaming.model.Produit;
 
 @Local
 public interface ICommandeService {
@@ -18,4 +19,6 @@ public interface ICommandeService {
 	public int deleteCommande(Long id);
 
 	public Commande getCommandeById(Long id);
+	
+	public void confirmCommandeMail(Commande c) throws Exception;
 }
