@@ -205,5 +205,5 @@ public class PanierManagedBean implements Serializable {
 		this.panier = new Panier();
 		return "accueil";
 	}
-
+ 
 }
