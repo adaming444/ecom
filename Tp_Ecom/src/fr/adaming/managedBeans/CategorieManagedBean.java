@@ -101,12 +101,10 @@ public class CategorieManagedBean implements Serializable {
 	}
 	
     public Categorie getSelectedCat() {
-    	maSession.setAttribute("selectedCat", this.selectedCat);
         return selectedCat;
     }
  
     public void setSelectedCat(Categorie selectedCat) {
-    	maSession.setAttribute("selectedCat", this.selectedCat);
         this.selectedCat = selectedCat;
     }
 

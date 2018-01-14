@@ -58,6 +58,7 @@ public class ProduitManagedBean implements Serializable {
 	private List<Produit> listeProduitsParCategorie;
 	private HttpSession maSession;
 	private UploadedFile file;
+	private Produit selectedPdt;
 
 	private String image;
 
@@ -118,6 +119,14 @@ public class ProduitManagedBean implements Serializable {
 	public void setImage(String image) {
 		this.image = image;
 	}
+	
+    public Produit getSelectedPdt() {
+        return selectedPdt;
+    }
+ 
+    public void setSelectedPdt(Produit selectedPdt) {
+        this.selectedPdt = selectedPdt;
+    }
 
 	// Les methodes metiers
 
@@ -326,4 +335,25 @@ public class ProduitManagedBean implements Serializable {
 //		return "affiche_produits";
 //					
 //	}
+	
+	//j'avais besoin de changer la sortie quand ca venait du client
+	public String getAllProduitsClient() {
+		this.listeProduits = pService.getAllProduit();
+		if (listeProduits.size() > 0) {
+
+			List<Produit> listeTemp = new ArrayList<Produit>();
+			for (Produit prod : listeProduits) {
+				prod.setImage("data:image/png;base64," + Base64.encodeBase64String(prod.getPhoto()));
+				listeTemp.add(prod);
+			}
+			this.setListeProduits(listeTemp);
+
+			maSession.setAttribute("produitList", this.listeProduits);
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("Une erreur est survenue du chargement de la liste."));
+		}
+		return "affiche_produitsparcategorietheoriquement";
+	}
+
 }

@@ -7,24 +7,24 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 
-	<title>Page affichage des produits</title>
+	<title>Affichage des catégories</title>
 
 </h:head>
 
 <h:body>
 
-	<ui:composition template="/template/template.xhtml">
+	<ui:composition template="/template/templateAdmin.xhtml">
 
 		<ui:define name="corps">
 
 			<h:form id="form">
-				<p:dataGrid var="cat" value="#{sessionScope.produitsListe}"
+				<p:dataGrid var="cat" value="#{sessionScope.categorieListe}"
 					columns="3" layout="grid" rows="12" paginator="true" id="cars"
 					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					rowsPerPageTemplate="6,12,16">
 
 					<f:facet name="header">
-            			Produits
+            			Catégories
        				</f:facet>
 
 					<p:panel header="#{cat.nomCategorie}" style="text-align:center">
