@@ -7,36 +7,67 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 
-	<title>Page affichage des catégories</title>
+	<title>Page affichage des produits</title>
 
 </h:head>
 
 <h:body>
 
-	<ui:composition template="/template/templateAdmin.xhtml">
+	<ui:composition template="/template/template.xhtml">
 
 		<ui:define name="corps">
 
-			<p:dataTable id="idTable" var="cat"
-				value="#{sessionScope.categorieListe}">
+			<h:form id="form">
+				<p:dataGrid var="cat" value="#{sessionScope.produitsListe}"
+					columns="3" layout="grid" rows="12" paginator="true" id="cars"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="6,12,16">
 
-				<p:column headerText="Id">
-					<h:outputText value="#{cat.idCategorie}" />
-				</p:column>
+					<f:facet name="header">
+            			Produits
+       				</f:facet>
 
-				<p:column headerText="Nom de la catégorie">
-					<h:outputText value="#{cat.nomCategorie}" />
-				</p:column>
+					<p:panel header="#{cat.nomCategorie}" style="text-align:center">
+						<h:panelGrid columns="1" style="width:100%">
+							<h:graphicImage value="#{cat.image}" width="60 px" height="60 px" />
 
-				<p:column headerText="Photo">
-					<h:graphicImage value="#{cat.image}" width="100 px" height="100 px" />
-				</p:column>
+							<p:commandLink update=":form:catDetail"
+								oncomplete="PF('catDialog').show()" title="View Detail">
+								<h:outputText styleClass="ui-icon ui-icon-search"
+									style="margin:0 auto;" />
+								<f:setPropertyActionListener value="#{cat}"
+									target="#{catMB.selectedCat}" />
+							</p:commandLink>
+						</h:panelGrid>
+					</p:panel>
 
-				<p:column headerText="Description">
-					<h:outputText value="#{cat.description}" />
-				</p:column>
+				</p:dataGrid>
 
-			</p:dataTable>
+				<p:dialog header="Informations de la catégories"
+					widgetVar="catDialog" modal="true" showEffect="fade"
+					hideEffect="fade" resizable="false">
+					<p:outputPanel id="catDetail" style="text-align:center;">
+						<p:panelGrid columns="2" rendered="#{not empty catMB.selectedCat}"
+							columnClasses="label,value">
+							<f:facet name="header">
+								<h:graphicImage value="#{catMB.selectedCat.image}" width="60 px"
+									height="60 px" />
+							</f:facet>
+
+							<h:outputText value="Id:" />
+							<h:outputText value="#{catMB.selectedCat.idCategorie}" />
+
+							<h:outputText value="Nom de la catégorie" />
+							<h:outputText value="#{catMB.selectedCat.nomCategorie}" />
+
+							<h:outputText value="Description de la catégorie" />
+							<h:outputText value="#{catMB.selectedCat.description}" />
+								
+						</p:panelGrid>
+					</p:outputPanel>
+
+				</p:dialog>
+			</h:form>
 
 			<p:growl id="message" />
 

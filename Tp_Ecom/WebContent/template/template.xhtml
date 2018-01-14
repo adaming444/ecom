@@ -19,21 +19,15 @@
 	<div>
 	
 		<!-- spécifier l'endroit ou je veux inserer mon header avec la balise ui:insert -->
-		<ui:insert name="headerAdmin">
+		<ui:insert name="header">
 			<!--  spécifier le fichier que je veux inserer avec la balise ui:include -->
-			<ui:include src="/template/headerAdmin.xhtml"></ui:include>
+			<ui:include src="/template/header.xhtml"></ui:include>
 		</ui:insert>
 		
 	</div>
 
-	<div id="madivdemerde">
-		
-		<!--  <ui:insert name="divGauche" style="min-width: 800px">
-			 spécifier le fichier que je veux inserer avec la balise ui:include 
-			<ui:include src="/template/divGauche.xhtml"></ui:include>
-		</ui:insert>-->
-		
-		<ui:insert id="mefaitpaschier" name="corps">
+	<div id="corps">
+		<ui:insert name="corps">
 			<!--  spécifier le fichier que je veux inserer avec la balise ui:include -->
 			<ui:include src="/template/corps.xhtml"></ui:include>
 		</ui:insert>
@@ -41,9 +35,9 @@
 	
 	<div>
 		<!-- spécifier l'endroit ou je veux inserer mon header avec la baseli ui:insert -->
-		<ui:insert name="footerAdmin">
+		<ui:insert name="footer">
 			<!--  spécifier le ficheier que je veux inserer avec la balise ui:include -->
-			<ui:include src="/template/footerAdmin.xhtml"></ui:include>
+			<ui:include src="/template/footer.xhtml"></ui:include>
 		</ui:insert>
 	</div>
 

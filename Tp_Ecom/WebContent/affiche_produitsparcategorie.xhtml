@@ -13,11 +13,22 @@
 
 <h:body>
 
+
+
 	<ui:composition template="/template/templateAdmin.xhtml">
 
 		<ui:define name="corps">
 
-			<p:dataTable id="idTable" var="pdt" value="#{sessionScope.produitList}">
+			<p:outputLabel for="categories" value="Catégories : " />
+			<p:selectOneMenu id="categories"
+				value="#{sessionScope.categorieListe}" effect="fold" editable="true">
+				<f:selectItem itemLabel="Select One" itemValue="" />
+				<f:selectItems value="#{sessionScope.categorieListe}" />
+			</p:selectOneMenu>
+
+
+			<p:dataTable id="idTable" var="pdt"
+				value="#{sessionScope.produitListParCateg}">
 
 				<p:column headerText="Id Produit">
 					<h:outputText value="#{pdt.idProduit}" />
@@ -44,7 +55,7 @@
 				</p:column>
 
 			</p:dataTable>
-			
+
 			<p:growl id="message" />
 
 		</ui:define>

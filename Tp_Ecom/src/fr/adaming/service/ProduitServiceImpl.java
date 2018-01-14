@@ -96,5 +96,9 @@ public class ProduitServiceImpl implements IProduitService {
 	    tr.close();
 		
 	}
+	
+	public List<Produit> getAllProduitByCategorie(long idCat) {
+		return produitDao.getAllProduitByCategorie(idCat);
+	};
 
 }

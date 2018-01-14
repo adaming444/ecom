@@ -110,4 +110,17 @@ public class ProduitDaoImpl implements IProduitDao {
 				int verif = query.executeUpdate();
 				return verif;
 	}
+	
+	public List<Produit> getAllProduitByCategorie(long idCat) {
+		// Construire la requete JPQL
+		String req = "SELECT p from Produit as p WHERE Categorie =:pidcat";
+		// Creer un query
+		Query query = em.createQuery(req);
+		// Assigner les paramètres
+		query.setParameter("pnomcat", idCat);
+		// envoyer et recuperer la req
+		@SuppressWarnings("unchecked")
+		List<Produit> listeP = query.getResultList();
+		return listeP;
+	}
 }

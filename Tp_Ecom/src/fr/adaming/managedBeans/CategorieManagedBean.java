@@ -39,6 +39,8 @@ public class CategorieManagedBean implements Serializable {
 	private UploadedFile file;
 
 	private String image;
+	
+	private Categorie selectedCat;
 
 	// Constructeur par defaut
 	public CategorieManagedBean() {
@@ -97,6 +99,17 @@ public class CategorieManagedBean implements Serializable {
 	public void setImage(String image) {
 		this.image = image;
 	}
+	
+    public Categorie getSelectedCat() {
+    	maSession.setAttribute("selectedCat", this.selectedCat);
+        return selectedCat;
+    }
+ 
+    public void setSelectedCat(Categorie selectedCat) {
+    	maSession.setAttribute("selectedCat", this.selectedCat);
+        this.selectedCat = selectedCat;
+    }
+
 
 	// methodes metier
 	public String addCategorie() {
@@ -187,5 +200,6 @@ public class CategorieManagedBean implements Serializable {
 		}
 		return "affiche_categories";
 	}
+	
 
 }

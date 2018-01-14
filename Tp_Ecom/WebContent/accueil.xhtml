@@ -4,10 +4,59 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-<head>
-<title>Bienvenue sur le site de SuperCarnaval !</title>
-</head>
-<body>
 
-</body>
+<h:head>
+
+	<title>Accueil</title>
+
+</h:head>
+
+<h:body>
+
+	<ui:composition template="/template/template.xhtml">
+
+		<ui:define name="corps">
+
+			<h:outputText style="color:white; font-size:30px"
+				value="Bienvenue sur le site de supercarnaval ! Que souhaitez vous acheter aujourd'hui ?" />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+
+
+			<h:form>
+
+
+				<p:commandButton value="Afficher tous les produits"
+					action="#{pMb.getAllProduits}" update="message" />
+				<p:commandButton value="Rechercher un produit"
+					action="rechercher_produit" update="message" />
+
+				<br />
+				<hr />
+
+
+				<p:commandButton value="Afficher toutes les catégories"
+					action="#{catMB.recupAllCategorie}" update="message" />
+				<p:commandButton value="Rechercher Catégorie"
+					action="rechercher_categorie" update="@all" />
+
+
+			</h:form>
+
+			<p:growl id="message" />
+
+		</ui:define>
+
+	</ui:composition>
+
+</h:body>
+
 </html>

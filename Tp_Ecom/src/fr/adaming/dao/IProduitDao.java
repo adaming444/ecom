@@ -23,5 +23,7 @@ public interface IProduitDao {
 	public Produit getProduitbyId(int id);
 	
 	public Produit getProduitbyName(String designation);
+	
+	public List<Produit> getAllProduitByCategorie(long idCat);
 
 }

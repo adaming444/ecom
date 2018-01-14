@@ -55,6 +55,7 @@ public class ProduitManagedBean implements Serializable {
 	private Produit produit;
 	private Admin admin;
 	private List<Produit> listeProduits;
+	private List<Produit> listeProduitsParCategorie;
 	private HttpSession maSession;
 	private UploadedFile file;
 
@@ -293,7 +294,7 @@ public class ProduitManagedBean implements Serializable {
 			tableProd.addCell("Prix " + p.getPrix());
 			tableProd.addCell("Quantité " + p.getQuantite());
 		}
-
+ 
 		return tableProd;
 
 	}
@@ -303,4 +304,26 @@ public class ProduitManagedBean implements Serializable {
 			paragraph.add(new Paragraph(" "));
 		}
 	}
+	
+
+//	public String getProduitsByCategorie() {
+//		Categorie catOut = (Categorie) maSession.getAttribute("selectedCat");
+//		this.listeProduitsParCategorie = pService.getAllProduitByCategorie(catOut.getIdCategorie());
+//		if (listeProduitsParCategorie.size() > 0) {
+//
+//			List<Produit> listeTemp = new ArrayList<Produit>();
+//			for (Produit prod : listeProduits) {
+//				prod.setImage("data:image/png;base64," + Base64.encodeBase64String(prod.getPhoto()));
+//				listeTemp.add(prod);
+//			}
+//			this.setListeProduits(listeTemp);
+//
+//			maSession.setAttribute("produitListParCateg", this.listeProduitsParCategorie);
+//		} else {
+//			FacesContext.getCurrentInstance().addMessage(null,
+//					new FacesMessage("Une erreur est survenue du chargement de la liste."));
+//		}
+//		return "affiche_produits";
+//					
+//	}
 }

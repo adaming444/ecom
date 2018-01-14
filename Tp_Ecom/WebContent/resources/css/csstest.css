@@ -1,27 +1,13 @@
 
  
 body{
-background-color: yellow;
 }
  
-
-
-.Toto{
-	background-color:red;
-}
-
-
-#madivdemerde{
-	height: 500px;
-	 display: flex;
-	 
-	 }
-#madivdemerde #mefaitpaschier{
-	 display: flex;
-	 flex-direction:column;
-	 justify-content: space-between;
+#corps{
+	min-height: 500px;
 	
 }
+
 
 .myLayoutStyleClass1 .ui-layout-unit-content{
    background: yellow;

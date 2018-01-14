@@ -25,4 +25,6 @@ public interface IProduitService {
 	
 	public void confirmAddProd(Produit p) throws Exception;
 
+	public List<Produit> getAllProduitByCategorie(long idCat);
+
 }
