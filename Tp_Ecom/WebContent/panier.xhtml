@@ -37,16 +37,18 @@
 				</p:column>
 				
 				<p:column headerText="operation">
-					<p:commandLink value="Supprimer" action="#{panMB.deleteLigneCommande}"
-						update="@all">
-						<f:setPropertyActionListener value="#{panMB.produit.idProduit}"
-							target="#{panMB.produit.idProduit}" />
-					</p:commandLink>
-        			/
-        			<p:commandLink value="Modifier" action="#{pMB.modifLien}">
-						<f:setPropertyActionListener value="#{pMB.produit.idProduit}"
-							target="#{pMB.produit.idProduit}" />
-					</p:commandLink>
+					<h:form>
+						<p:commandLink value="Supprimer" action="#{panMB.deleteLigneCommande}"
+							update="@all">
+							<f:setPropertyActionListener value="#{panMB.produit.idProduit}"
+								target="#{panMB.produit.idProduit}" />
+						</p:commandLink>
+        				/
+        				<p:commandLink value="Modifier" action="#{pMB.modifLien}">
+							<f:setPropertyActionListener value="#{pMB.produit.idProduit}"
+								target="#{pMB.produit.idProduit}" />
+						</p:commandLink>
+					</h:form>
 				</p:column>
 
 			</p:dataTable>
