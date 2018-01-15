@@ -61,7 +61,7 @@ public class AdminManagedBean implements Serializable {
 
 			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("categorieListe", listeCategorie);
 			
-			return "success";
+			return "accueilAdmin";
 
 		} catch (Exception e) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("L'admin n'existe pas"));
