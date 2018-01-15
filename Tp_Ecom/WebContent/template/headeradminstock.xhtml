@@ -19,52 +19,49 @@
 	<h:form>
 		<p:growl id="messages" />
 
-		<p:menubar styleClass="Toto">
+		<p:menubar>
 
 			<p:menuitem value="Accueil" url="accueilAdmin.xhtml"
 				icon="ui-icon-home" />
 
-			<p:submenu label="Deguisements" icon="ui-icon-person">
-				<p:menuitem value="Deguisements Adultes" url="**.xhtml"
+			<p:submenu label="Catégories" icon="ui-icon-person">
+				<p:menuitem value="Ajouter Catégories" url="ajout_categorie.xhtml"
 					icon="ui-icon-plusthick" />
-				<p:menuitem value="Deguisements Enfants" url="**.xhtml"
+				<p:menuitem value="Modifier Catégories" url="modif_categorie.xhtml"
 					icon="ui-icon-minusthick" />
-				<p:menuitem value="Accessoires Deguisements" url="**.xhtml"
+				<p:menuitem value="Supprimer Catégories" url="suppr_categorie.xhtml"
+					icon="ui-icon-pencil" />
+				<p:menuitem value="Afficher toutes les catégories"
+					url="affiche_categories.xhtml" icon="ui-icon-pencil" />
+				<p:menuitem value="Rechercher Catégories" url="rechercher_categorie.xhtml"
 					icon="ui-icon-pencil" />
 			</p:submenu>
 
-			<p:submenu label="Masque" icon="ui-icon-suitcase">
-				<p:menuitem value="Masque de carnaval" url="**.xhtml"
+			<p:submenu label="Produits" icon="ui-icon-person">
+				<p:menuitem value="Ajouter Produit" url="ajout_produit.xhtml"
 					icon="ui-icon-plusthick" />
-				<p:menuitem value="Masque Venicien" url="**.xhtml"
+				<p:menuitem value="Modifier Produit" url="modif_produit.xhtml"
 					icon="ui-icon-minusthick" />
-				<p:menuitem value="Masque Fantasy" url="modifCC.xhtml"
+				<p:menuitem value="Supprimer Produit" url="suppr_produit.xhtml"
 					icon="ui-icon-pencil" />
-				<p:menuitem value="Masque Animaux" url="rechercheCC.xhtml"
-					icon="ui-icon-search" />
-				<p:separator />
+				<p:menuitem value="Afficher tous les produits"
+					url="affiche_produits.xhtml" icon="ui-icon-pencil" />
+				<p:menuitem value="Rechercher Produits" url="rechercher_produit.xhtml"
+					icon="ui-icon-pencil" />
 			</p:submenu>
 
-			<p:submenu label="Accessoires" icon="ui-icon-search">
-				<p:menuitem value=" Decorations " url="**.xhtml"
+			<p:submenu label="Client" icon="ui-icon-person">
+				<p:menuitem value="Ajouter Client" url="ajout_client.xhtml"
 					icon="ui-icon-plusthick" />
-				<p:menuitem value=" Confeti " url="retireArgentCC.xhtml"
+				<p:menuitem value="Modifier Client" url="modif_client.xhtml"
 					icon="ui-icon-minusthick" />
-				<p:menuitem value=" Autres " url="virementCC.xhtml"
-					icon="ui-icon-transfer-e-w" />
+				<p:menuitem value="Supprimer Client" url="suppr_client.xhtml"
+					icon="ui-icon-pencil" />
+				<p:menuitem value="Afficher tous les clients"
+					url="affiche_clients.xhtml" icon="ui-icon-pencil" />
+				<p:menuitem value="Rechercher Clients" url="rechercher_client.xhtml"
+					icon="ui-icon-pencil" />
 			</p:submenu>
-
-			<p:menuitem value=" Promotions" url="**.xhtml"
-				icon="ui-icon-plusthick" />
-
-			<p:menuitem value="Administrateur" url="#" icon="ui-icon-plusthick" />
-
-			<f:facet name="options">
-				<p:inputText style="margin-right:10px" placeholder="Rechercher"
-					action="#{cMB.rechercherClient}" />
-				<p:commandButton value="Logout" icon="ui-icon-extlink"
-					action="#{aMB.sedeconnecter}" />
-			</f:facet>
 
 		</p:menubar>
 
