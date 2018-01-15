@@ -72,9 +72,17 @@
 							<h:outputText value="Quantité disponible du produit" />
 							<h:outputText value="#{pMb.selectedPdt.quantite}" />
 
-
+							<h:outputText value="Quantité à ajouter au panier" />
+							<h:inputText value="#{panMB.ligneCommande.quantite}" />
+							
 						</p:panelGrid>
 					</p:outputPanel>
+					
+					<p:commandLink value="Ajouter" action="#{panMB.addLigneCommande}"
+						update="@all">
+						<f:setPropertyActionListener value="#{pdt.produit.idProduit}"
+							target="#{panMB.produit.idProduit}" />
+					</p:commandLink>
 
 				</p:dialog>
 			</h:form>
